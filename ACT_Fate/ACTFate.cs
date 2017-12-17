@@ -142,6 +142,20 @@ namespace FFXIV_FATE_ACT_Plugin
             isTelegramDutyAlertEnable = checkBoxTelegramDutyFinder.Checked;
             isToastNotificationEnable = checkBoxToastNotification.Checked;
         }
+
+        IActPluginV1 GetFFXIVPlugin()
+        {
+            IActPluginV1 obj = null;
+            foreach (var x in ActGlobals.oFormActMain.ActPlugins)
+            {
+                if (x.pluginFile.Name.ToUpper() == "FFXIV_ACT_Plugin.dll".ToUpper() && x.cbEnabled.Checked)
+                {
+                    obj = x.pluginObj;
+                }
+            }
+            return obj;
+        }
+
         void SaveSettings()
         {
             //tree
