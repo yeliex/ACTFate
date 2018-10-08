@@ -46,7 +46,7 @@
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker, Version=2.10.0.215, Culture=neutral, PublicKeyToken=a946b61e93d97868, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Advanced Combat Tracker\Advanced Combat Tracker.exe</HintPath>
+      <HintPath>C:\ACT\Advanced Combat Tracker.exe</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -84,6 +84,8 @@
       <HintPath>..\..\..\..\..\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Annotated\Windows.winmd</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Windows.Data" />
+    <Reference Include="Windows.UI" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -95,12 +97,15 @@
     <Compile Include="Network\Network.cs" />
     <Compile Include="Network\Network.Event.cs" />
     <Compile Include="Network\Network.Packet.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ShellHelper.cs" />
     <Compile Include="ShortCutCreator.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <COMReference Include="NetFwTypeLib">
       <Guid>{58FBCF7C-E7A9-467C-80B3-FC65E8FCCA08}</Guid>
@@ -116,13 +121,18 @@
     <EmbeddedResource Include="ACTFate.resx">
       <DependentUpon>ACTFate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetDir)*" "C:\Advanced Combat Tracker\Plugins\ACTFate\"
-copy /Y "$(SolutionDir)data.json" "C:\Advanced Combat Tracker\Plugins\ACTFate\data.json</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetDir)*" "C:\ACT\Plugin\ACT.Fate\"
+
+copy /Y "$(SolutionDir)data.json" "C:\ACT\Plugin\ACT.Fate\data.json"</PostBuildEvent>
   </PropertyGroup>
 </Project>

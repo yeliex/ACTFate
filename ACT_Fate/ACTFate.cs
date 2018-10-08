@@ -770,6 +770,7 @@ namespace FFXIV_FATE_ACT_Plugin
             try
             {
                 // Get a toast XML template
+                
                 Windows.Data.Xml.Dom.XmlDocument toastXml = Windows.UI.Notifications.ToastNotificationManager.GetTemplateContent(Windows.UI.Notifications.ToastTemplateType.ToastImageAndText03);
 
                 // Fill in the text elements
