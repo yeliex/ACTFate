@@ -7,6 +7,8 @@ using Advanced_Combat_Tracker;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
+using Windows.Data;
+using Windows.UI;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using System.Xml;
@@ -16,9 +18,9 @@ using System.Collections.Specialized;
 using System.Linq;
 
 [assembly: AssemblyTitle("FFXIV F.A.T.E")]
-//[assembly: AssemblyDescription("FATE Log")]
-[assembly: AssemblyCompany("Wana")]
-[assembly: AssemblyVersion("1.0.0.1")]
+[assembly: AssemblyDescription("Duty FATE Assist -- ACT Plugin")]
+[assembly: AssemblyCompany("Bluefissure")]
+[assembly: AssemblyVersion("1.2.1.0")]
 
 namespace FFXIV_FATE_ACT_Plugin
 {
@@ -45,16 +47,15 @@ namespace FFXIV_FATE_ACT_Plugin
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxLanguage;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textTelegramToken;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textTelegramChatID;
+        private System.Windows.Forms.TextBox postURL;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBoxTelegram;
+        private System.Windows.Forms.CheckBox checkBoxUploader;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TreeView telegramFateTreeView;
-        private System.Windows.Forms.CheckBox checkBoxTelegramDutyFinder;
+        private System.Windows.Forms.TreeView FateTreeView;
+        private System.Windows.Forms.CheckBox checkBoxDutyFinder;
         private System.Windows.Forms.CheckBox checkBoxToastNotification;
+        private System.Windows.Forms.Button testToastButton;
         private static string APP_ID = "Advanced Combat Tracker"; // 아무거나 쓰면 됨 유니크하게
         public ACTFate()
         {
@@ -105,11 +106,10 @@ namespace FFXIV_FATE_ACT_Plugin
             xmlSettings.AddControlSetting(comboBoxLanguage.Name, comboBoxLanguage);
             xmlSettings.AddControlSetting(checkBoxToastNotification.Name, checkBoxToastNotification);
 
-            xmlSettings.AddControlSetting(checkBoxTelegram.Name, checkBoxTelegram);
-            xmlSettings.AddControlSetting(textTelegramChatID.Name, textTelegramChatID);
-            xmlSettings.AddControlSetting(textTelegramToken.Name, textTelegramToken);
-            xmlSettings.AddControlSetting(checkBoxTelegramDutyFinder.Name, checkBoxTelegramDutyFinder);
-            xmlSettings.AddStringSetting("telegramChkFates");
+            xmlSettings.AddControlSetting(checkBoxUploader.Name, checkBoxUploader);
+            xmlSettings.AddControlSetting(postURL.Name, postURL);
+            xmlSettings.AddControlSetting(checkBoxDutyFinder.Name, checkBoxDutyFinder);
+            xmlSettings.AddStringSetting("chkFates");
 
             if (File.Exists(settingsFile))
             {
@@ -135,11 +135,10 @@ namespace FFXIV_FATE_ACT_Plugin
                 }
                 xReader.Close();
             }
-            isTelegramEnable = checkBoxTelegram.Checked;
-            textTelegramChatID.Enabled = !isTelegramEnable;
-            textTelegramToken.Enabled = !isTelegramEnable;
+            isUploaderEnable = checkBoxUploader.Checked;
+            postURL.Enabled = !isUploaderEnable;
 
-            isTelegramDutyAlertEnable = checkBoxTelegramDutyFinder.Checked;
+            isDutyAlertEnable = checkBoxDutyFinder.Checked;
             isToastNotificationEnable = checkBoxToastNotification.Checked;
         }
 
@@ -159,9 +158,9 @@ namespace FFXIV_FATE_ACT_Plugin
         void SaveSettings()
         {
             //tree
-            telegramChkFates = "";
+            chkFates = "";
             List<string> c = new List<string>();
-            foreach (System.Windows.Forms.TreeNode area in this.telegramFateTreeView.Nodes)
+            foreach (System.Windows.Forms.TreeNode area in this.FateTreeView.Nodes)
             {
                 if (area.Checked) c.Add((string)area.Tag);
                 foreach (System.Windows.Forms.TreeNode fate in area.Nodes)
@@ -169,7 +168,7 @@ namespace FFXIV_FATE_ACT_Plugin
                     if (fate.Checked) c.Add((string)fate.Tag);
                 }
             }
-            telegramChkFates = string.Join("|", c);
+            chkFates = string.Join("|", c);
 
             FileStream fs = new FileStream(settingsFile, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
             XmlTextWriter xWriter = new XmlTextWriter(fs, Encoding.UTF8);
@@ -275,16 +274,15 @@ namespace FFXIV_FATE_ACT_Plugin
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textTelegramToken = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textTelegramChatID = new System.Windows.Forms.TextBox();
+            this.postURL = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBoxTelegram = new System.Windows.Forms.CheckBox();
+            this.checkBoxUploader = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.telegramFateTreeView = new System.Windows.Forms.TreeView();
-            this.checkBoxTelegramDutyFinder = new System.Windows.Forms.CheckBox();
+            this.FateTreeView = new System.Windows.Forms.TreeView();
+            this.checkBoxDutyFinder = new System.Windows.Forms.CheckBox();
             this.checkBoxToastNotification = new System.Windows.Forms.CheckBox();
+            this.testToastButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -294,7 +292,7 @@ namespace FFXIV_FATE_ACT_Plugin
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(21, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 12);
+            this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 7;
             this.label1.Text = "Language";
             // 
@@ -306,70 +304,51 @@ namespace FFXIV_FATE_ACT_Plugin
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.Size = new System.Drawing.Size(121, 20);
             this.comboBoxLanguage.TabIndex = 6;
-            this.comboBoxLanguage.SelectedIndexChanged += comboBoxLanguage_SelectedIndexChanged;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textTelegramToken);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textTelegramChatID);
+            this.groupBox1.Controls.Add(this.postURL);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.checkBoxTelegram);
+            this.groupBox1.Controls.Add(this.checkBoxUploader);
             this.groupBox1.Location = new System.Drawing.Point(23, 49);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(533, 51);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Telegram";
+            this.groupBox1.Text = "Event Uploader";
             // 
-            // textTelegramToken
+            // postURL
             // 
-            this.textTelegramToken.Location = new System.Drawing.Point(232, 20);
-            this.textTelegramToken.Name = "textTelegramToken";
-            this.textTelegramToken.Size = new System.Drawing.Size(291, 21);
-            this.textTelegramToken.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(186, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 12);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Token";
-            // 
-            // textTelegramChatID
-            // 
-            this.textTelegramChatID.Location = new System.Drawing.Point(67, 20);
-            this.textTelegramChatID.Name = "textTelegramChatID";
-            this.textTelegramChatID.Size = new System.Drawing.Size(100, 21);
-            this.textTelegramChatID.TabIndex = 7;
+            this.postURL.Location = new System.Drawing.Point(42, 20);
+            this.postURL.Name = "postURL";
+            this.postURL.Size = new System.Drawing.Size(478, 21);
+            this.postURL.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(15, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 12);
+            this.label2.Size = new System.Drawing.Size(23, 12);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Chat ID";
+            this.label2.Text = "URL";
             // 
-            // checkBoxTelegram
+            // checkBoxUploader
             // 
-            this.checkBoxTelegram.AutoSize = true;
-            this.checkBoxTelegram.Location = new System.Drawing.Point(67, 0);
-            this.checkBoxTelegram.Name = "checkBoxTelegram";
-            this.checkBoxTelegram.Size = new System.Drawing.Size(58, 16);
-            this.checkBoxTelegram.TabIndex = 5;
-            this.checkBoxTelegram.Text = "Active";
-            this.checkBoxTelegram.UseVisualStyleBackColor = true;
-            this.checkBoxTelegram.CheckedChanged += new System.EventHandler(this.checkBoxTelegram_CheckedChanged);
+            this.checkBoxUploader.AutoSize = true;
+            this.checkBoxUploader.Location = new System.Drawing.Point(112, -1);
+            this.checkBoxUploader.Name = "checkBoxUploader";
+            this.checkBoxUploader.Size = new System.Drawing.Size(60, 16);
+            this.checkBoxUploader.TabIndex = 5;
+            this.checkBoxUploader.Text = "Active";
+            this.checkBoxUploader.UseVisualStyleBackColor = true;
+            this.checkBoxUploader.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.telegramFateTreeView);
-            this.groupBox2.Controls.Add(this.checkBoxTelegramDutyFinder);
+            this.groupBox2.Controls.Add(this.FateTreeView);
+            this.groupBox2.Controls.Add(this.checkBoxDutyFinder);
             this.groupBox2.Location = new System.Drawing.Point(23, 115);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(533, 457);
@@ -382,45 +361,56 @@ namespace FFXIV_FATE_ACT_Plugin
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(15, 57);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 12);
+            this.label4.Size = new System.Drawing.Size(47, 12);
             this.label4.TabIndex = 10;
             this.label4.Text = "F.A.T.E";
             // 
-            // telegramFateTreeView
+            // FateTreeView
             // 
-            this.telegramFateTreeView.CheckBoxes = true;
-            this.telegramFateTreeView.Location = new System.Drawing.Point(15, 81);
-            this.telegramFateTreeView.Name = "telegramFateTreeView";
-            this.telegramFateTreeView.Size = new System.Drawing.Size(508, 370);
-            this.telegramFateTreeView.TabIndex = 9;
-            this.telegramFateTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.fateTreeView_AfterCheck);
+            this.FateTreeView.CheckBoxes = true;
+            this.FateTreeView.Location = new System.Drawing.Point(15, 81);
+            this.FateTreeView.Name = "FateTreeView";
+            this.FateTreeView.Size = new System.Drawing.Size(508, 370);
+            this.FateTreeView.TabIndex = 9;
+            this.FateTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.fateTreeView_AfterCheck);
             // 
             // checkBoxTelegramDutyFinder
             // 
-            this.checkBoxTelegramDutyFinder.AutoSize = true;
-            this.checkBoxTelegramDutyFinder.Checked = true;
-            this.checkBoxTelegramDutyFinder.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxTelegramDutyFinder.Location = new System.Drawing.Point(15, 22);
-            this.checkBoxTelegramDutyFinder.Name = "checkBoxTelegramDutyFinder";
-            this.checkBoxTelegramDutyFinder.Size = new System.Drawing.Size(88, 16);
-            this.checkBoxTelegramDutyFinder.TabIndex = 8;
-            this.checkBoxTelegramDutyFinder.Text = "Duty Finder";
-            this.checkBoxTelegramDutyFinder.UseVisualStyleBackColor = true;
-            this.checkBoxTelegramDutyFinder.CheckedChanged += new System.EventHandler(this.checkBoxTelegramDutyFinder_CheckedChanged);
+            this.checkBoxDutyFinder.AutoSize = true;
+            this.checkBoxDutyFinder.Checked = true;
+            this.checkBoxDutyFinder.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDutyFinder.Location = new System.Drawing.Point(15, 22);
+            this.checkBoxDutyFinder.Name = "checkBoxTelegramDutyFinder";
+            this.checkBoxDutyFinder.Size = new System.Drawing.Size(90, 16);
+            this.checkBoxDutyFinder.TabIndex = 8;
+            this.checkBoxDutyFinder.Text = "Duty Finder";
+            this.checkBoxDutyFinder.UseVisualStyleBackColor = true;
+            this.checkBoxDutyFinder.CheckedChanged += new System.EventHandler(this.checkBoxTelegramDutyFinder_CheckedChanged);
             // 
             // checkBoxToastNotification
             // 
             this.checkBoxToastNotification.AutoSize = true;
             this.checkBoxToastNotification.Location = new System.Drawing.Point(255, 18);
             this.checkBoxToastNotification.Name = "checkBoxToastNotification";
-            this.checkBoxToastNotification.Size = new System.Drawing.Size(160, 16);
+            this.checkBoxToastNotification.Size = new System.Drawing.Size(174, 16);
             this.checkBoxToastNotification.TabIndex = 11;
             this.checkBoxToastNotification.Text = "Active Toast Notification";
             this.checkBoxToastNotification.UseVisualStyleBackColor = true;
             this.checkBoxToastNotification.CheckedChanged += new System.EventHandler(this.checkBoxToastNotification_CheckedChanged);
             // 
+            // testToastButton
+            // 
+            this.testToastButton.Location = new System.Drawing.Point(468, 14);
+            this.testToastButton.Name = "testToastButton";
+            this.testToastButton.Size = new System.Drawing.Size(75, 23);
+            this.testToastButton.TabIndex = 12;
+            this.testToastButton.Text = "Test";
+            this.testToastButton.UseVisualStyleBackColor = true;
+            this.testToastButton.Click += new System.EventHandler(this.testToastButton_Click);
+            // 
             // ACTFate
             // 
+            this.Controls.Add(this.testToastButton);
             this.Controls.Add(this.checkBoxToastNotification);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -551,7 +541,7 @@ namespace FFXIV_FATE_ACT_Plugin
             sendToACT(text);
 
             postToToastWindowsNotificationIfNeeded(server, eventType, args);
-            postToTelegramIfNeeded(server, eventType, args);
+            postToURLIfNeeded(server, eventType, args);
         }
 
         private void sendToACT(string text)
@@ -568,9 +558,9 @@ namespace FFXIV_FATE_ACT_Plugin
         private JObject data;
         private string selLng;
 
-        private bool isTelegramEnable = false;
-        private string telegramChkFates;
-        private ConcurrentStack<string> telegramSelectedFates = new ConcurrentStack<string>();
+        private bool isUploaderEnable = false;
+        private string chkFates;
+        private ConcurrentStack<string> SelectedFates = new ConcurrentStack<string>();
 
         private void loadJSONData()
         {
@@ -602,12 +592,12 @@ namespace FFXIV_FATE_ACT_Plugin
         
         private void loadFates()
         {
-            this.telegramFateTreeView.Nodes.Clear();
+            this.FateTreeView.Nodes.Clear();
 
             List<string> c = new List<string>();
-            if (telegramChkFates != null && telegramChkFates != "")
+            if (chkFates != null && chkFates != "")
             {
-                string[] sp = telegramChkFates.Split(new char[] { '|' });
+                string[] sp = chkFates.Split(new char[] { '|' });
                 for (int i = 0; i < sp.Length; i++)
                 {
                     c.Add(sp[i]);
@@ -617,28 +607,35 @@ namespace FFXIV_FATE_ACT_Plugin
             lockTreeEvent = true;
             foreach (JProperty item in data["areas"])
             {
-                string key = item.Name;
-                System.Windows.Forms.TreeNode areaNode = this.telegramFateTreeView.Nodes.Add(data["areas"][key][selLng].ToString());
-                areaNode.Tag = "AREA:" + key;
-                if (c.Contains((string)areaNode.Tag)) areaNode.Checked = true;
-                foreach (JProperty fate in data["fates"])
+                try
                 {
-                    if (data["fates"][fate.Name]["area_code"].ToString().Equals(key) == false) continue;
-                    string text = data["fates"][fate.Name]["name"][selLng].ToString();
-                    if (text == null || text == "") text = data["fates"][fate.Name]["name"]["en"].ToString();
-                    System.Windows.Forms.TreeNode fateNode = areaNode.Nodes.Add(text);
-                    fateNode.Tag = fate.Name;
-                    if (c.Contains((string)fateNode.Tag)) fateNode.Checked = true;
+                    string key = item.Name;
+                    System.Windows.Forms.TreeNode areaNode = this.FateTreeView.Nodes.Add(data["areas"][key][selLng].ToString());
+                    areaNode.Tag = "AREA:" + key;
+                    if (c.Contains((string)areaNode.Tag)) areaNode.Checked = true;
+                    foreach (JProperty fate in data["fates"])
+                    {
+                        if (data["fates"][fate.Name]["area_code"].ToString().Equals(key) == false) continue;
+                        string text = data["fates"][fate.Name]["name"][selLng].ToString();
+                        if (text == null || text == "") text = data["fates"][fate.Name]["name"]["en"].ToString();
+                        System.Windows.Forms.TreeNode fateNode = areaNode.Nodes.Add(text);
+                        fateNode.Tag = fate.Name;
+                        if (c.Contains((string)fateNode.Tag)) fateNode.Checked = true;
+                    }
+                }catch (Exception e)
+                {
+                    Log.Ex(e, "error");
                 }
+
             }
-            telegramSelectedFates.Clear();
-            updateSelectedFates(telegramFateTreeView.Nodes);
+            SelectedFates.Clear();
+            updateSelectedFates(FateTreeView.Nodes);
             lockTreeEvent = false;
 
         }
 
         bool lockTreeEvent = false;
-        private bool isTelegramDutyAlertEnable;
+        private bool isDutyAlertEnable;
         private bool isToastNotificationEnable;
 
         private void fateTreeView_AfterCheck(object sender, System.Windows.Forms.TreeViewEventArgs e)
@@ -668,8 +665,8 @@ namespace FFXIV_FATE_ACT_Plugin
                     e.Node.Parent.Checked = flag;
                 }
             }
-            telegramSelectedFates.Clear();
-            updateSelectedFates(telegramFateTreeView.Nodes);
+            SelectedFates.Clear();
+            updateSelectedFates(FateTreeView.Nodes);
 
 
             lockTreeEvent = false;
@@ -679,15 +676,15 @@ namespace FFXIV_FATE_ACT_Plugin
         {
             foreach (System.Windows.Forms.TreeNode node in nodes)
             {
-                if (node.Checked) telegramSelectedFates.Push((string)node.Tag);
+                if (node.Checked) SelectedFates.Push((string)node.Tag);
                 updateSelectedFates(node.Nodes);
             }
         }
 
-        private void postToTelegramIfNeeded(string server, App.Network.EventType eventType, int[] args)
+        private void postToURLIfNeeded(string server, App.Network.EventType eventType, int[] args)
         {
             if (eventType != App.Network.EventType.FATE_BEGIN && eventType != App.Network.EventType.MATCH_ALERT) return;
-            if (isTelegramEnable == false) return;
+            if (isUploaderEnable == false) return;
 
             string head = networks.Count <= 1 ? "" : "[" + server + "] ";
             switch (eventType)
@@ -695,15 +692,15 @@ namespace FFXIV_FATE_ACT_Plugin
                 case App.Network.EventType.MATCH_ALERT: 
                     //text += getTextRoulette(args[0]) + "|"; pos++;
                     //text += getTextInstance(args[1]) + "|"; pos++;
-                    if (isTelegramDutyAlertEnable)
+                    if (isDutyAlertEnable)
                     {
-                        postToTelegram(head + getTextRoulette(args[0]) + " >> " + getTextInstance(args[1]));
+                        postToURL(head + getTextRoulette(args[0]) + " >> " + getTextInstance(args[1]));
                     }
                     break;
                 case App.Network.EventType.FATE_BEGIN:
                     //text += getTextFate(args[0]) + "|" + getTextFateArea(args[0]) + "|"; pos++;
-                    if (telegramSelectedFates.Contains(args[0].ToString())) {
-                        postToTelegram(head + getTextFateArea(args[0]) + " >> " + getTextFate(args[0]));
+                    if (SelectedFates.Contains(args[0].ToString())) {
+                        postToURL(head + getTextFateArea(args[0]) + " >> " + getTextFate(args[0]));
                     }
                     break;
 
@@ -721,14 +718,14 @@ namespace FFXIV_FATE_ACT_Plugin
                 case App.Network.EventType.MATCH_ALERT:
                     //text += getTextRoulette(args[0]) + "|"; pos++;
                     //text += getTextInstance(args[1]) + "|"; pos++;
-                    if (isTelegramDutyAlertEnable)
+                    if (isDutyAlertEnable)
                     {
                        toastWindowNotification(head + getTextRoulette(args[0]) + " >> " + getTextInstance(args[1]));
                     }
                     break;
                 case App.Network.EventType.FATE_BEGIN:
                     //text += getTextFate(args[0]) + "|" + getTextFateArea(args[0]) + "|"; pos++;
-                    if (telegramSelectedFates.Contains(args[0].ToString()))
+                    if (SelectedFates.Contains(args[0].ToString()))
                     {
                         toastWindowNotification(head + getTextFateArea(args[0]) + " >> " + getTextFate(args[0]));
                     }
@@ -737,31 +734,29 @@ namespace FFXIV_FATE_ACT_Plugin
             }
         }
 
-        private void postToTelegram(string message)
+        private void postToURL(string message)
         {
-            string chatID = textTelegramChatID.Text, token = textTelegramToken.Text;
-            if (chatID == null || chatID == "" || token == null || token == "") return;
+            string url = postURL.Text;
+            if (url == null || url == "" ) return;
 
             using (WebClient client = new WebClient())
             {
-                client.UploadValues("https://api.telegram.org/bot" + token + "/sendMessage", new NameValueCollection()
+                client.UploadValuesAsync(new Uri(url), "POST", new NameValueCollection()
                 {
-                    { "chat_id", chatID },
                     { "text", message }
                 });
             }
         }
 
-        private void checkBoxTelegram_CheckedChanged(object sender, EventArgs e)
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            isTelegramEnable = checkBoxTelegram.Checked;
-            textTelegramChatID.Enabled = !isTelegramEnable;
-            textTelegramToken.Enabled = !isTelegramEnable;
+            isUploaderEnable = checkBoxUploader.Checked;
+            postURL.Enabled = !isUploaderEnable;
         }
 
         private void checkBoxTelegramDutyFinder_CheckedChanged(object sender, EventArgs e)
         {
-            isTelegramDutyAlertEnable = checkBoxTelegramDutyFinder.Checked;
+            isDutyAlertEnable = checkBoxDutyFinder.Checked;
         }
 
 
@@ -801,6 +796,12 @@ namespace FFXIV_FATE_ACT_Plugin
         private void checkBoxToastNotification_CheckedChanged(object sender, EventArgs e)
         {
             isToastNotificationEnable = checkBoxToastNotification.Checked;
+        }
+
+        private void testToastButton_Click(object sender, EventArgs e)
+        {
+            toastWindowNotification("Test Toast Notification");
+            postToURL("Test URL Post");
         }
     }
 
