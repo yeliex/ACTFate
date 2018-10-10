@@ -20,7 +20,7 @@ using System.Linq;
 [assembly: AssemblyTitle("FFXIV F.A.T.E")]
 [assembly: AssemblyDescription("Duty FATE Assist -- ACT Plugin")]
 [assembly: AssemblyCompany("Bluefissure")]
-[assembly: AssemblyVersion("1.2.1.0")]
+[assembly: AssemblyVersion("1.2.2.0")]
 
 namespace FFXIV_FATE_ACT_Plugin
 {
@@ -56,6 +56,7 @@ namespace FFXIV_FATE_ACT_Plugin
         private System.Windows.Forms.CheckBox checkBoxDutyFinder;
         private System.Windows.Forms.CheckBox checkBoxToastNotification;
         private System.Windows.Forms.Button testToastButton;
+        private System.Windows.Forms.CheckBox checkBoxTTS;
         private static string APP_ID = "Advanced Combat Tracker"; // 아무거나 쓰면 됨 유니크하게
         public ACTFate()
         {
@@ -283,6 +284,7 @@ namespace FFXIV_FATE_ACT_Plugin
             this.checkBoxDutyFinder = new System.Windows.Forms.CheckBox();
             this.checkBoxToastNotification = new System.Windows.Forms.CheckBox();
             this.testToastButton = new System.Windows.Forms.Button();
+            this.checkBoxTTS = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -374,13 +376,13 @@ namespace FFXIV_FATE_ACT_Plugin
             this.FateTreeView.TabIndex = 9;
             this.FateTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.fateTreeView_AfterCheck);
             // 
-            // checkBoxTelegramDutyFinder
+            // checkBoxDutyFinder
             // 
             this.checkBoxDutyFinder.AutoSize = true;
             this.checkBoxDutyFinder.Checked = true;
             this.checkBoxDutyFinder.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxDutyFinder.Location = new System.Drawing.Point(15, 22);
-            this.checkBoxDutyFinder.Name = "checkBoxTelegramDutyFinder";
+            this.checkBoxDutyFinder.Name = "checkBoxDutyFinder";
             this.checkBoxDutyFinder.Size = new System.Drawing.Size(90, 16);
             this.checkBoxDutyFinder.TabIndex = 8;
             this.checkBoxDutyFinder.Text = "Duty Finder";
@@ -390,7 +392,7 @@ namespace FFXIV_FATE_ACT_Plugin
             // checkBoxToastNotification
             // 
             this.checkBoxToastNotification.AutoSize = true;
-            this.checkBoxToastNotification.Location = new System.Drawing.Point(255, 18);
+            this.checkBoxToastNotification.Location = new System.Drawing.Point(222, 17);
             this.checkBoxToastNotification.Name = "checkBoxToastNotification";
             this.checkBoxToastNotification.Size = new System.Drawing.Size(174, 16);
             this.checkBoxToastNotification.TabIndex = 11;
@@ -400,7 +402,7 @@ namespace FFXIV_FATE_ACT_Plugin
             // 
             // testToastButton
             // 
-            this.testToastButton.Location = new System.Drawing.Point(468, 14);
+            this.testToastButton.Location = new System.Drawing.Point(468, 13);
             this.testToastButton.Name = "testToastButton";
             this.testToastButton.Size = new System.Drawing.Size(75, 23);
             this.testToastButton.TabIndex = 12;
@@ -408,8 +410,20 @@ namespace FFXIV_FATE_ACT_Plugin
             this.testToastButton.UseVisualStyleBackColor = true;
             this.testToastButton.Click += new System.EventHandler(this.testToastButton_Click);
             // 
+            // checkBoxTTS
+            // 
+            this.checkBoxTTS.AutoSize = true;
+            this.checkBoxTTS.Location = new System.Drawing.Point(408, 17);
+            this.checkBoxTTS.Name = "checkBoxTTS";
+            this.checkBoxTTS.Size = new System.Drawing.Size(42, 16);
+            this.checkBoxTTS.TabIndex = 13;
+            this.checkBoxTTS.Text = "TTS";
+            this.checkBoxTTS.UseVisualStyleBackColor = true;
+            this.checkBoxTTS.CheckedChanged += new System.EventHandler(this.checkBoxTTS_CheckedChanged);
+            // 
             // ACTFate
             // 
+            this.Controls.Add(this.checkBoxTTS);
             this.Controls.Add(this.testToastButton);
             this.Controls.Add(this.checkBoxToastNotification);
             this.Controls.Add(this.groupBox2);
@@ -542,6 +556,7 @@ namespace FFXIV_FATE_ACT_Plugin
 
             postToToastWindowsNotificationIfNeeded(server, eventType, args);
             postToURLIfNeeded(server, eventType, args);
+            postToTTSIfNeeded(server, eventType, args);
         }
 
         private void sendToACT(string text)
@@ -637,6 +652,7 @@ namespace FFXIV_FATE_ACT_Plugin
         bool lockTreeEvent = false;
         private bool isDutyAlertEnable;
         private bool isToastNotificationEnable;
+        private bool isTTSEnable;
 
         private void fateTreeView_AfterCheck(object sender, System.Windows.Forms.TreeViewEventArgs e)
         {
@@ -734,6 +750,33 @@ namespace FFXIV_FATE_ACT_Plugin
             }
         }
 
+        private void postToTTSIfNeeded(string server, App.Network.EventType eventType, int[] args)
+        {
+            if (eventType != App.Network.EventType.FATE_BEGIN && eventType != App.Network.EventType.MATCH_ALERT) return;
+            if (isTTSEnable == false) return;
+
+            string head = networks.Count <= 1 ? "" : "[" + server + "] ";
+            switch (eventType)
+            {
+                case App.Network.EventType.MATCH_ALERT:
+                    //text += getTextRoulette(args[0]) + "|"; pos++;
+                    //text += getTextInstance(args[1]) + "|"; pos++;
+                    if (isDutyAlertEnable)
+                    {
+                        TTS(head + getTextRoulette(args[0]) + " " + getTextInstance(args[1]));
+                    }
+                    break;
+                case App.Network.EventType.FATE_BEGIN:
+                    //text += getTextFate(args[0]) + "|" + getTextFateArea(args[0]) + "|"; pos++;
+                    if (SelectedFates.Contains(args[0].ToString()))
+                    {
+                        TTS(head + getTextFateArea(args[0]) + " " + getTextFate(args[0]));
+                    }
+                    break;
+
+            }
+        }
+
         private void postToURL(string message)
         {
             string url = postURL.Text;
@@ -759,7 +802,10 @@ namespace FFXIV_FATE_ACT_Plugin
             isDutyAlertEnable = checkBoxDutyFinder.Checked;
         }
 
-
+        private void TTS(string text)
+        {
+            ActGlobals.oFormActMain.TTS(text);
+        }
         private void toastWindowNotification(string text)
         {
             try
@@ -780,6 +826,11 @@ namespace FFXIV_FATE_ACT_Plugin
                 Windows.Data.Xml.Dom.XmlNodeList imageElements = toastXml.GetElementsByTagName("image");
                 imageElements[0].Attributes.GetNamedItem("src").NodeValue = imagePath;
 
+                /*
+                Windows.Data.Xml.Dom.XmlElement audioElement = toastXml.CreateElement("audio");
+                audioElement.SetAttribute("src", "ms-winsoundevent:Notification.SMS");
+                audioElement.SetAttribute("loop", "true");
+                */
                 // Create the toast and attach event listeners
                 Windows.UI.Notifications.ToastNotification toast = new Windows.UI.Notifications.ToastNotification(toastXml);
 
@@ -798,10 +849,18 @@ namespace FFXIV_FATE_ACT_Plugin
             isToastNotificationEnable = checkBoxToastNotification.Checked;
         }
 
+
+
         private void testToastButton_Click(object sender, EventArgs e)
         {
             toastWindowNotification("Test Toast Notification");
             postToURL("Test URL Post");
+            TTS("Test TTS");
+        }
+
+        private void checkBoxTTS_CheckedChanged(object sender, EventArgs e)
+        {
+            isTTSEnable = checkBoxTTS.Checked;
         }
     }
 
