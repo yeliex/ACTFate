@@ -107,6 +107,7 @@ namespace FFXIV_FATE_ACT_Plugin
             xmlSettings.AddControlSetting(comboBoxLanguage.Name, comboBoxLanguage);
             xmlSettings.AddControlSetting(checkBoxToastNotification.Name, checkBoxToastNotification);
 
+            xmlSettings.AddControlSetting(checkBoxTTS.Name, checkBoxTTS);
             xmlSettings.AddControlSetting(checkBoxUploader.Name, checkBoxUploader);
             xmlSettings.AddControlSetting(postURL.Name, postURL);
             xmlSettings.AddControlSetting(checkBoxDutyFinder.Name, checkBoxDutyFinder);
@@ -138,6 +139,8 @@ namespace FFXIV_FATE_ACT_Plugin
             }
             isUploaderEnable = checkBoxUploader.Checked;
             postURL.Enabled = !isUploaderEnable;
+
+            isTTSEnable = checkBoxTTS.Checked;
 
             isDutyAlertEnable = checkBoxDutyFinder.Checked;
             isToastNotificationEnable = checkBoxToastNotification.Checked;
@@ -499,7 +502,7 @@ namespace FFXIV_FATE_ACT_Plugin
         private void Network_onReceiveEvent(int pid, App.Network.EventType eventType, int[] args)
         {
             string server = (networks[pid].process.MainModule.FileName.Contains("KOREA") ? "KOREA" : "GLOBAL");
-            string text = pid + "|" + server + "|" + eventType + "|";
+            string text = "[ACTFATE]"+ ((char)007) + pid + ((char)007) + server + ((char)007) + eventType + ((char)007);
 
             
             int pos = 0;
@@ -509,47 +512,49 @@ namespace FFXIV_FATE_ACT_Plugin
                 case App.Network.EventType.INSTANCE_EXIT:
                     if (args.Length > 0)
                     {
-                        text += getTextInstance(args[0]) + "|"; pos++;
+                        text += getTextInstance(args[0]) + ((char)007); pos++;
                     }
                     break;
                 case App.Network.EventType.FATE_BEGIN:
                 case App.Network.EventType.FATE_PROGRESS:
                 case App.Network.EventType.FATE_END:
-                    text += getTextFate(args[0]) + "|" + getTextFateArea(args[0]) + "|";pos++;
+                    text += getTextFate(args[0]) + ((char)007) + getTextFateArea(args[0]) + ((char)007);pos++;
                     break;
                 case App.Network.EventType.MATCH_BEGIN:
-                    text += (App.Network.MatchType)args[0] + "|"; pos++;
+                    text += (App.Network.MatchType)args[0] + ((char)007); pos++;
                     switch ((App.Network.MatchType)args[0])
                     {
                         case App.Network.MatchType.ROULETTE:
-                            text += getTextRoulette(args[1]) + "|"; pos++;
+                            text += getTextRoulette(args[1]) + ((char)007); pos++;
                             break;
                         case App.Network.MatchType.SELECTIVE:
-                            text += args[1] + "|"; pos++;
+                            text += args[1] + ((char)007); pos++;
                             int p = pos;
                             for (int i = p; i < args.Length; i++)
                             {
-                                text += getTextInstance(args[i]) + "|"; pos++;
+                                text += getTextInstance(args[i]) + ((char)007); pos++;
                             }
                             break;
                     }
                     break;
                 case App.Network.EventType.MATCH_END:
-                    text += (App.Network.MatchEndType)args[0] + "|"; pos++;
+                    text += (App.Network.MatchEndType)args[0] + ((char)007); pos++;
                     break;
                 case App.Network.EventType.MATCH_PROGRESS:
-                    text += getTextInstance(args[0]) + "|"; pos++;
+                    text += getTextInstance(args[0]) + ((char)007); pos++;
                     break;
                 case App.Network.EventType.MATCH_ALERT:
-                    text += getTextRoulette(args[0]) + "|"; pos++;
-                    text += getTextInstance(args[1]) + "|"; pos++;
+                    text += getTextRoulette(args[0]) + ((char)007); pos++;
+
+                    text += (args[1].ToString() + ((char)007).ToString());
+                    text += getTextInstance(args[1]) + ((char)007); pos++;
                     break;
 
             }
 
             for (int i = pos; i < args.Length; i++)
             {
-                text += args[i] + "|";
+                text += args[i] + ((char)007);
             }
 
             sendToACT(text);
