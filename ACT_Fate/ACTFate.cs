@@ -20,7 +20,7 @@ using System.Linq;
 [assembly: AssemblyTitle("FFXIV F.A.T.E")]
 [assembly: AssemblyDescription("Duty FATE Assist -- ACT Plugin")]
 [assembly: AssemblyCompany("Bluefissure")]
-[assembly: AssemblyVersion("1.2.2.0")]
+[assembly: AssemblyVersion("1.2.3.0")]
 
 namespace FFXIV_FATE_ACT_Plugin
 {
@@ -311,6 +311,7 @@ namespace FFXIV_FATE_ACT_Plugin
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.Size = new System.Drawing.Size(121, 20);
             this.comboBoxLanguage.TabIndex = 6;
+            this.comboBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBoxLanguage_SelectedIndexChanged_1);
             // 
             // groupBox1
             // 
@@ -370,7 +371,7 @@ namespace FFXIV_FATE_ACT_Plugin
             this.resetCheckedButton.Name = "resetCheckedButton";
             this.resetCheckedButton.Size = new System.Drawing.Size(75, 23);
             this.resetCheckedButton.TabIndex = 11;
-            this.resetCheckedButton.Text = "reset";
+            this.resetCheckedButton.Text = "Reset";
             this.resetCheckedButton.UseVisualStyleBackColor = true;
             this.resetCheckedButton.Click += new System.EventHandler(this.resetCheckedButton_Click);
             // 
@@ -488,7 +489,7 @@ namespace FFXIV_FATE_ACT_Plugin
             string areaCode = null;
             try
             {
-                areaCode = data["fates"][code.ToString()]["area_code"].ToString();
+                areaCode = data["fates"][code.ToString()]["area_code"][selLng].ToString();
                 return data["areas"][areaCode][selLng].ToString();
             }
             catch (Exception e)
@@ -643,12 +644,14 @@ namespace FFXIV_FATE_ACT_Plugin
                 try
                 {
                     string key = item.Name;
+                    if (data["areas"][key][selLng].ToString() == "null")
+                        continue;
                     System.Windows.Forms.TreeNode areaNode = this.FateTreeView.Nodes.Add(data["areas"][key][selLng].ToString());
                     areaNode.Tag = "AREA:" + key;
                     if (c.Contains((string)areaNode.Tag)) areaNode.Checked = true;
                     foreach (JProperty fate in data["fates"])
                     {
-                        if (data["fates"][fate.Name]["area_code"].ToString().Equals(key) == false) continue;
+                        if (data["fates"][fate.Name]["area_code"][selLng].ToString().Equals(key) == false) continue;
                         string text = data["fates"][fate.Name]["name"][selLng].ToString();
                         if (text == null || text == "") text = data["fates"][fate.Name]["name"]["en"].ToString();
                         System.Windows.Forms.TreeNode fateNode = areaNode.Nodes.Add(text);
@@ -892,6 +895,12 @@ namespace FFXIV_FATE_ACT_Plugin
                 }
             }
             SelectedFates.Clear();
+        }
+
+        private void comboBoxLanguage_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            selLng = (string)comboBoxLanguage.SelectedValue;
+            loadFates();
         }
     }
 
