@@ -57,6 +57,7 @@ namespace FFXIV_FATE_ACT_Plugin
         private System.Windows.Forms.CheckBox checkBoxToastNotification;
         private System.Windows.Forms.Button testToastButton;
         private System.Windows.Forms.CheckBox checkBoxTTS;
+        private System.Windows.Forms.Button resetCheckedButton;
         private static string APP_ID = "Advanced Combat Tracker"; // 아무거나 쓰면 됨 유니크하게
         public ACTFate()
         {
@@ -279,6 +280,7 @@ namespace FFXIV_FATE_ACT_Plugin
             this.label2 = new System.Windows.Forms.Label();
             this.checkBoxUploader = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.resetCheckedButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.FateTreeView = new System.Windows.Forms.TreeView();
             this.checkBoxDutyFinder = new System.Windows.Forms.CheckBox();
@@ -348,6 +350,7 @@ namespace FFXIV_FATE_ACT_Plugin
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.resetCheckedButton);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.FateTreeView);
             this.groupBox2.Controls.Add(this.checkBoxDutyFinder);
@@ -357,6 +360,16 @@ namespace FFXIV_FATE_ACT_Plugin
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Alert";
+            // 
+            // resetCheckedButton
+            // 
+            this.resetCheckedButton.Location = new System.Drawing.Point(97, 52);
+            this.resetCheckedButton.Name = "resetCheckedButton";
+            this.resetCheckedButton.Size = new System.Drawing.Size(75, 23);
+            this.resetCheckedButton.TabIndex = 11;
+            this.resetCheckedButton.Text = "reset";
+            this.resetCheckedButton.UseVisualStyleBackColor = true;
+            this.resetCheckedButton.Click += new System.EventHandler(this.resetCheckedButton_Click);
             // 
             // label4
             // 
@@ -854,13 +867,26 @@ namespace FFXIV_FATE_ACT_Plugin
         private void testToastButton_Click(object sender, EventArgs e)
         {
             toastWindowNotification("Test Toast Notification");
-            postToURL("Test URL Post");
             TTS("Test TTS");
+            postToURL("Test URL Post");
         }
 
         private void checkBoxTTS_CheckedChanged(object sender, EventArgs e)
         {
             isTTSEnable = checkBoxTTS.Checked;
+        }
+
+        private void resetCheckedButton_Click(object sender, EventArgs e)
+        {
+            foreach (System.Windows.Forms.TreeNode area in this.FateTreeView.Nodes)
+            {
+                foreach (System.Windows.Forms.TreeNode fate in area.Nodes)
+                {
+                    if (fate.Checked)
+                        fate.Checked = false;
+                }
+            }
+            SelectedFates.Clear();
         }
     }
 
