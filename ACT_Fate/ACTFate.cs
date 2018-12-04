@@ -20,7 +20,7 @@ using System.Linq;
 [assembly: AssemblyTitle("FFXIV F.A.T.E")]
 [assembly: AssemblyDescription("Duty FATE Assist -- ACT Plugin")]
 [assembly: AssemblyCompany("Bluefissure")]
-[assembly: AssemblyVersion("1.2.3.0")]
+[assembly: AssemblyVersion("1.2.4.0")]
 
 namespace FFXIV_FATE_ACT_Plugin
 {
