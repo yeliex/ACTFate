@@ -16,11 +16,12 @@ using System.Text;
 using System.Net;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Windows.Forms;
 
 [assembly: AssemblyTitle("FFXIV F.A.T.E")]
 [assembly: AssemblyDescription("Duty FATE Assist -- ACT Plugin")]
 [assembly: AssemblyCompany("Bluefissure")]
-[assembly: AssemblyVersion("1.2.4.0")]
+[assembly: AssemblyVersion("1.2.4.1")]
 
 namespace FFXIV_FATE_ACT_Plugin
 {
@@ -829,39 +830,49 @@ namespace FFXIV_FATE_ACT_Plugin
         }
         private void toastWindowNotification(string text)
         {
-            try
+            Version currentVersion = Environment.OSVersion.Version;
+            Version compareToVersion = new Version("6.2");
+            if (currentVersion.CompareTo(compareToVersion) >= 0)
             {
-                // Get a toast XML template
-                
-                Windows.Data.Xml.Dom.XmlDocument toastXml = Windows.UI.Notifications.ToastNotificationManager.GetTemplateContent(Windows.UI.Notifications.ToastTemplateType.ToastImageAndText03);
-
-                // Fill in the text elements
-                Windows.Data.Xml.Dom.XmlNodeList stringElements = toastXml.GetElementsByTagName("text");
-                for (int i = 0; i < stringElements.Length; i++)
+                try
                 {
-                    stringElements[i].AppendChild(toastXml.CreateTextNode(text));
+                    // Get a toast XML template
+
+                    Windows.Data.Xml.Dom.XmlDocument toastXml = Windows.UI.Notifications.ToastNotificationManager.GetTemplateContent(Windows.UI.Notifications.ToastTemplateType.ToastImageAndText03);
+
+                    // Fill in the text elements
+                    Windows.Data.Xml.Dom.XmlNodeList stringElements = toastXml.GetElementsByTagName("text");
+                    for (int i = 0; i < stringElements.Length; i++)
+                    {
+                        stringElements[i].AppendChild(toastXml.CreateTextNode(text));
+                    }
+
+                    // Specify the absolute path to an image
+                    String imagePath = "file:///" + Path.GetFullPath("toastImageAndText.png"); // 없으면 기본 아이콘 이미지로 알아서 뜸. ACT있는곳에 넣어야되는듯 dll옆이 아니라
+                    Windows.Data.Xml.Dom.XmlNodeList imageElements = toastXml.GetElementsByTagName("image");
+                    imageElements[0].Attributes.GetNamedItem("src").NodeValue = imagePath;
+
+                    /*
+                    Windows.Data.Xml.Dom.XmlElement audioElement = toastXml.CreateElement("audio");
+                    audioElement.SetAttribute("src", "ms-winsoundevent:Notification.SMS");
+                    audioElement.SetAttribute("loop", "true");
+                    */
+                    // Create the toast and attach event listeners
+                    Windows.UI.Notifications.ToastNotification toast = new Windows.UI.Notifications.ToastNotification(toastXml);
+
+                    // Show the toast. Be sure to specify the AppUserModelId on your application's shortcut!
+                    Windows.UI.Notifications.ToastNotificationManager.CreateToastNotifier(APP_ID).Show(toast);
                 }
-
-                // Specify the absolute path to an image
-                String imagePath = "file:///" + Path.GetFullPath("toastImageAndText.png"); // 없으면 기본 아이콘 이미지로 알아서 뜸. ACT있는곳에 넣어야되는듯 dll옆이 아니라
-                Windows.Data.Xml.Dom.XmlNodeList imageElements = toastXml.GetElementsByTagName("image");
-                imageElements[0].Attributes.GetNamedItem("src").NodeValue = imagePath;
-
-                /*
-                Windows.Data.Xml.Dom.XmlElement audioElement = toastXml.CreateElement("audio");
-                audioElement.SetAttribute("src", "ms-winsoundevent:Notification.SMS");
-                audioElement.SetAttribute("loop", "true");
-                */
-                // Create the toast and attach event listeners
-                Windows.UI.Notifications.ToastNotification toast = new Windows.UI.Notifications.ToastNotification(toastXml);
-
-                // Show the toast. Be sure to specify the AppUserModelId on your application's shortcut!
-                Windows.UI.Notifications.ToastNotificationManager.CreateToastNotifier(APP_ID).Show(toast);
+                catch (Exception e)
+                {
+                    Log.Ex(e, "error");
+                }
             }
-            catch (Exception e)
+            else
             {
-                Log.Ex(e, "error");
+                MessageBox.Show(text, "ACTFate", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
             }
+            
             
         }
 
