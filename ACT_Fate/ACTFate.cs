@@ -21,7 +21,7 @@ using System.Windows.Forms;
 [assembly: AssemblyTitle("FFXIV F.A.T.E")]
 [assembly: AssemblyDescription("Duty FATE Assist -- ACT Plugin")]
 [assembly: AssemblyCompany("Bluefissure")]
-[assembly: AssemblyVersion("1.2.4.1")]
+[assembly: AssemblyVersion("1.2.4.2")]
 
 namespace FFXIV_FATE_ACT_Plugin
 {
@@ -59,7 +59,8 @@ namespace FFXIV_FATE_ACT_Plugin
         private System.Windows.Forms.Button testToastButton;
         private System.Windows.Forms.CheckBox checkBoxTTS;
         private System.Windows.Forms.Button resetCheckedButton;
-        private static string APP_ID = "Advanced Combat Tracker"; // 아무거나 쓰면 됨 유니크하게
+        private ComboBox comboBoxBookmark;
+        private static string APP_ID = "Advanced Combat Tracker"; // You can write anything.
         public ACTFate()
         {
             InitializeComponent();
@@ -102,6 +103,7 @@ namespace FFXIV_FATE_ACT_Plugin
             this.comboBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             selLng = (string)this.comboBoxLanguage.SelectedValue;
             loadFates();
+            loadBookmarks();
         }
 
         void LoadSettings()
@@ -291,6 +293,7 @@ namespace FFXIV_FATE_ACT_Plugin
             this.checkBoxToastNotification = new System.Windows.Forms.CheckBox();
             this.testToastButton = new System.Windows.Forms.Button();
             this.checkBoxTTS = new System.Windows.Forms.CheckBox();
+            this.comboBoxBookmark = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -355,6 +358,7 @@ namespace FFXIV_FATE_ACT_Plugin
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.comboBoxBookmark);
             this.groupBox2.Controls.Add(this.resetCheckedButton);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.FateTreeView);
@@ -368,7 +372,7 @@ namespace FFXIV_FATE_ACT_Plugin
             // 
             // resetCheckedButton
             // 
-            this.resetCheckedButton.Location = new System.Drawing.Point(97, 52);
+            this.resetCheckedButton.Location = new System.Drawing.Point(84, 52);
             this.resetCheckedButton.Name = "resetCheckedButton";
             this.resetCheckedButton.Size = new System.Drawing.Size(75, 23);
             this.resetCheckedButton.TabIndex = 11;
@@ -399,7 +403,7 @@ namespace FFXIV_FATE_ACT_Plugin
             this.checkBoxDutyFinder.AutoSize = true;
             this.checkBoxDutyFinder.Checked = true;
             this.checkBoxDutyFinder.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDutyFinder.Location = new System.Drawing.Point(15, 22);
+            this.checkBoxDutyFinder.Location = new System.Drawing.Point(15, 20);
             this.checkBoxDutyFinder.Name = "checkBoxDutyFinder";
             this.checkBoxDutyFinder.Size = new System.Drawing.Size(90, 16);
             this.checkBoxDutyFinder.TabIndex = 8;
@@ -438,6 +442,16 @@ namespace FFXIV_FATE_ACT_Plugin
             this.checkBoxTTS.Text = "TTS";
             this.checkBoxTTS.UseVisualStyleBackColor = true;
             this.checkBoxTTS.CheckedChanged += new System.EventHandler(this.checkBoxTTS_CheckedChanged);
+            // 
+            // comboBoxBookmark
+            // 
+            this.comboBoxBookmark.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBookmark.FormattingEnabled = true;
+            this.comboBoxBookmark.Location = new System.Drawing.Point(199, 53);
+            this.comboBoxBookmark.Name = "comboBoxBookmark";
+            this.comboBoxBookmark.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxBookmark.TabIndex = 12;
+            this.comboBoxBookmark.SelectedIndexChanged += new System.EventHandler(this.comboBoxBookmark_SelectedIndexChanged);
             // 
             // ACTFate
             // 
@@ -590,6 +604,13 @@ namespace FFXIV_FATE_ACT_Plugin
             public string Name { get; set; }
             public string Code { get; set; }
         }
+
+        private class Bookmark
+        {
+            public string Name { get; set; }
+            public string Code { get; set; }
+        }
+
         private JObject data;
         private string selLng;
 
@@ -610,13 +631,28 @@ namespace FFXIV_FATE_ACT_Plugin
                 languages.Add(new Language { Name = l[key].ToString(), Code = key });
             }
 
+
             this.comboBoxLanguage.DataSource = languages.ToArray();
             comboBoxLanguage.DisplayMember = "Name";
             comboBoxLanguage.ValueMember = "Code";
             selLng = (string)comboBoxLanguage.SelectedValue;
-                        
+
             data = json;  
             
+        }
+
+        private void loadBookmarks()
+        {
+            List<Bookmark> bookmarks = new List<Bookmark>();
+            var bms = data["bookmarks"];
+            foreach (var item in bms)
+            {
+                string key = ((JProperty)item).Name;
+                bookmarks.Add(new Bookmark { Name = bms[key]["names"][selLng].ToString(), Code = key });
+            }
+            this.comboBoxBookmark.DataSource = bookmarks;
+            comboBoxBookmark.DisplayMember = "Name";
+            comboBoxBookmark.ValueMember = "Code";
         }
 
         private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
@@ -848,7 +884,7 @@ namespace FFXIV_FATE_ACT_Plugin
                     }
 
                     // Specify the absolute path to an image
-                    String imagePath = "file:///" + Path.GetFullPath("toastImageAndText.png"); // 없으면 기본 아이콘 이미지로 알아서 뜸. ACT있는곳에 넣어야되는듯 dll옆이 아니라
+                    String imagePath = "file:///" + Path.GetFullPath("toastImageAndText.png"); // If it does not exist, it will take the default icon image. It seems to have to be put in ACT
                     Windows.Data.Xml.Dom.XmlNodeList imageElements = toastXml.GetElementsByTagName("image");
                     imageElements[0].Attributes.GetNamedItem("src").NodeValue = imagePath;
 
@@ -912,6 +948,27 @@ namespace FFXIV_FATE_ACT_Plugin
         {
             selLng = (string)comboBoxLanguage.SelectedValue;
             loadFates();
+            loadBookmarks();
+        }
+
+        private void comboBoxBookmark_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string SelectedBookmark = (string)comboBoxBookmark.SelectedValue;
+            foreach (System.Windows.Forms.TreeNode area in this.FateTreeView.Nodes)
+            {
+                foreach (System.Windows.Forms.TreeNode fate in area.Nodes)
+                {
+                    foreach(var f in data["bookmarks"][SelectedBookmark]["fates"])
+                    {
+                        if (f.ToString().Equals(fate.Tag))
+                        {
+                            fate.Checked = true;
+                        }
+                    }
+                }
+            }
+            updateSelectedFates(FateTreeView.Nodes);
+            lockTreeEvent = false;
         }
     }
 

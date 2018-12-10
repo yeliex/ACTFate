@@ -21,19 +21,7 @@
     },
     "3088": {
       "name": {
-        "en": "Recall of Duty",
-        "ko": "null",
-        "ja": "再演の叙事詩",
-        "fr": "La ballade des réminiscences",
-        "zh": "回顾英雄诗篇"
-      },
-      "t": "0",
-      "h": "0",
-      "d": "0"
-    },
-    "167": {
-      "name": {
-        "en": "a Spectacle for the Ages",
+        "en": "Recall of Duty Spectacle for the Ages",
         "ko": "null",
         "ja": "四国合同演習",
         "fr": "La grande manœuvre éorzéenne",
@@ -21521,6 +21509,144 @@
       "ja": "null",
       "fr": "null",
       "zh": "群狼盛宴：练习赛"
+    }
+  },
+  "bookmarks": {
+    "default": {
+      "names": {
+        "en": "Bookmark",
+        "ko": "Bookmark",
+        "ja": "Bookmark",
+        "fr": "Bookmark",
+        "zh": "书签"
+      },
+      "fates": []
+    },
+    "bookOfSkyfireI": {
+      "names": {
+        "en": "Book Of Skyfire I",
+        "ko": "Book Of Skyfire I",
+        "ja": "Book Of Skyfire I",
+        "fr": "Book Of Skyfire I",
+        "zh": "火天一卷"
+      },
+      "fates": [
+        611,
+        480,
+        589
+      ]
+    },
+    "bookOfSkyfireII": {
+      "names": {
+        "en": "Book Of Skyfire II",
+        "ko": "Book Of Skyfire II",
+        "ja": "Book Of Skyfire II",
+        "fr": "Book Of Skyfire II",
+        "zh": "火天二卷"
+      },
+      "fates": [
+        424,
+        633,
+        571
+      ]
+    },
+    "bookOfNetherfireI": {
+      "names": {
+        "en": "Book Of Netherfire I",
+        "ko": "Book Of Netherfire I",
+        "ja": "Book Of Netherfire I",
+        "fr": "Book Of Netherfire I",
+        "zh": "火狱一卷"
+      },
+      "fates": [
+        521,
+        620,
+        430
+      ]
+    },
+    "bookOfSkyfallI": {
+      "names": {
+        "en": "Book Of Skyfall I",
+        "ko": "Book Of Skyfall I",
+        "ja": "Book Of Skyfall I",
+        "fr": "Book Of Skyfall I",
+        "zh": "水天一卷"
+      },
+      "fates": [
+        540,
+        577,
+        475
+      ]
+    },
+    "bookOfSkyfallII": {
+      "names": {
+        "en": "Book Of Skyfall II",
+        "ko": "Book Of Skyfall II",
+        "ja": "Book Of Skyfall II",
+        "fr": "Book Of Skyfall II",
+        "zh": "水天二卷"
+      },
+      "fates": [
+        569,
+        616,
+        516
+      ]
+    },
+    "bookOfNetherfallI": {
+      "names": {
+        "en": "Book Of Netherfall I",
+        "ko": "Book Of Netherfall I",
+        "ja": "Book Of Netherfall I",
+        "fr": "Book Of Netherfall I",
+        "zh": "水狱一卷"
+      },
+      "fates": [
+        632,
+        642,
+        499
+      ]
+    },
+    "bookOfSkywindI": {
+      "names": {
+        "en": "Book Of Skywind I",
+        "ko": "Book Of Skywind I",
+        "ja": "Book Of Skywind I",
+        "fr": "Book Of Skywind I",
+        "zh": "风天一卷"
+      },
+      "fates": [
+        604,
+        317,
+        517
+      ]
+    },
+    "bookOfSkywindII": {
+      "names": {
+        "en": "Book Of Skywind II",
+        "ko": "Book Of Skywind II",
+        "ja": "Book Of Skywind II",
+        "fr": "Book Of Skywind II",
+        "zh": "风天二卷"
+      },
+      "fates": [
+        552,
+        628,
+        486
+      ]
+    },
+    "bookOfSkyearthI": {
+      "names": {
+        "en": "Book Of Skyearth I",
+        "ko": "Book Of Skyearth I",
+        "ja": "Book Of Skyearth I",
+        "fr": "Book Of Skyearth I",
+        "zh": "土天一卷"
+      },
+      "fates": [
+        543,
+        493,
+        587
+      ]
     }
   }
 }

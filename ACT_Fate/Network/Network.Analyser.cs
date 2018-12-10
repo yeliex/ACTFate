@@ -48,7 +48,7 @@ namespace App
                                     stream.CopyTo(messages);
                                 }
                                 else {
-                                    stream.Seek(2, SeekOrigin.Current); // .Net DeflateStream 버그 (앞 2바이트 강제 무시)
+                                    stream.Seek(2, SeekOrigin.Current); // .Net DeflateStream Bug (Force the previous 2 bytes)
 
                                     using (var z = new DeflateStream(stream, CompressionMode.Decompress))
                                     {
@@ -87,16 +87,16 @@ namespace App
 
                         if (length < payload.Length)
                         {
-                            // 더 처리해야 할 패킷이 남아 있음
+                            // There are more packets left to process
                             payload = payload.Skip(length).ToArray();
                             continue;
                         }
                     }
                     else
                     {
-                        // 앞쪽이 잘려서 오는 패킷 workaround
-                        // 잘린 패킷 1개는 버리고 바로 다음 패킷부터 찾기...
-                        // TODO: 버리는 패킷 없게 제대로 수정하기
+                        // Packets coming out of the front workaround
+                        // Discard one truncated packet and find just the next packet ...
+                        // TODO: Correctly make no discarded packets
 
                         for (var offset = 0; offset < payload.Length - 2; offset++)
                         {
@@ -125,7 +125,7 @@ namespace App
             {
                 if (message.Length < 32)
                 {
-                    // type == 0x0000 이였던 메시지는 여기서 걸러짐
+                    // type == 0x0000 Messages were filtered here
                     return;
                 }
                 
@@ -145,7 +145,7 @@ namespace App
 
                 var data = message.Skip(32).ToArray();
 
-                //입장 / 퇴장
+                // Entry / exit
                 if (opcode == 0x022F) 
                 {
                     var code = BitConverter.ToInt16(data, 4);
@@ -156,23 +156,23 @@ namespace App
                     if (type == 0x0B)
                     {
                         //Log.I("l-field-instance-entered", Data.GetInstance(code).Name);
-                        // EVENT: 입던 할때, code = 던전 코드
+                        // EVENT: When worn, code = dungeon code
                         // 
                         //Log.I("l-field-instance-entered " + code);
-                        Log.I("입장함 인던코드=" + code);
+                        Log.I("Incoming code=" + code);
                         fireEvent(EventType.INSTANCE_ENTER, new int[] { code });
                     }
                     else if (type == 0x0C)
                     {
-                        // EVENT: 입던에서 나옴
+                        // EVENT: Come out of dress
                         //Log.I("l-field-instance-left");
-                        Log.I("퇴장함 인던코드=" + code);
+                        Log.I("I'm leaving=" + code);
                         fireEvent(EventType.INSTANCE_EXIT, new int[] { code });
                     }
 
                     
                 }
-                //돌발: 발생, 진행중, 종료
+                //Outbreak: occurring, in progress, ending
                 else if (opcode == 0x0143)
                 {
                     var type = data[0];
@@ -185,16 +185,16 @@ namespace App
 
                         var fate = Data.GetFATE(code);
 
-                        //Log.D("\"{0}\" 돌발 진행도 {1}%", fate.Name, progress);
+                        //Log.D("\"{0}\" Breakthrough progress {1}%", fate.Name, progress);
                         */
-                        // EVENT: 돌발 진행도, code = 돌발 코드, progress = 진행도 퍼센트
-                        //Log.I(code + " 돌발 진행도 " + progress);
+                        // EVENT: breakthrough, code = breakthrough, progress = progress percentage
+                        //Log.I(code + " Breakthrough progress " + progress);
                         fireEvent(EventType.FATE_PROGRESS, new int[] { code, progress });
                     }
                     else if (type == 0x79)
                     {
-                        
-                        // 돌발 임무 종료 (지역 이동시 발생할 수 있는 모든 임무에 대해 전부 옴)
+
+                        // Unexpected mission termination (for all missions that may occur when moving the area)
 
                         var code = BitConverter.ToUInt16(data, 4);
                         var status = BitConverter.ToUInt16(data, 28);
@@ -202,44 +202,44 @@ namespace App
                         /*
                         var fate = Data.GetFATE(code);
 
-                        //Log.D("\"{0}\" 돌발 종료!", fate.Name);
+                        //Log.D("\"{0}\" Break out!", fate.Name);
                         */
-                        // EVENT: 임무 종료시, code = 돌발 코드, (맵을 이동할때도 종료로 인정되는듯)
-                        Log.I("돌발 종료, 돌발코드=" + code + ", status=" + status);
+                        // EVENT: At the end of the mission, code = emergency code,
+                        Log.I("Abrupt end=" + code + ", status=" + status);
                         fireEvent(EventType.FATE_END, new int[] { code, status });
                     }
                     else if (type == 0x74)
                     {
-                        // 돌발 임무 발생 (지역 이동시에도 기존 돌발 목록이 옴)
-                        // EVENT: 돌발 임무 발생, code = 돌발 코드 (맵을 이동해서 도착할때도 발생)
+                        // Occurrence of an outbreak (even if you move the area, the existing breakdown list comes)
+                        // EVENT: Occurrence of an unexpected mission, code = Unexpected code (also occurs when moving map)
                         var code = BitConverter.ToUInt16(data, 4);
-                        Log.I("돌발 발생, 돌발코드=" + code);
+                        Log.I("Abrupt =" + code);
                         //var fate = Data.GetFATE(code);
                         fireEvent(EventType.FATE_BEGIN, new int[] { code });
                     }
                 }
-                // 매칭 정보
+                // Matching information
                 else if (opcode == 0x0078)
                 {
                     var status = data[0];
                     var reason = data[4];
 
-                    // 신청
+                    //apply
                     if (status == 0)
                     {
                         state = State.QUEUED;
 
                         var rouletteCode = data[20];
 
-                        if (rouletteCode != 0 && (data[15] == 0 || data[15] == 64)) //무작위 임무 신청, 한국서버/글로벌 서버
+                        if (rouletteCode != 0 && (data[15] == 0 || data[15] == 64)) //Random assignment application, Korea server / global server
                         {
                             //var roulette = Data.GetRoulette(rouletteCode);
                             //mainForm.overlayForm.SetRoulleteDuty(roulette);
                             //Log.I("l-queue-started-roulette", roulette.Name);
-                            Log.I("매칭신청, 무작 종류=" + rouletteCode);
+                            Log.I("Matching application, random type=" + rouletteCode);
                             fireEvent(EventType.MATCH_BEGIN, new int[] { (int)MatchType.ROULETTE, rouletteCode });
                         }
-                        else //특정 임무 신청
+                        else //Apply for a specific mission
                         {
                             // var instances = new List<Instance>();
                             var instances = new List<int>();
@@ -266,39 +266,39 @@ namespace App
 
                             // Log.I("l-queue-started-general",
                             //string.Join(", ", instances.Select(x => x.Name).ToArray()));*/
-                            Log.I("매칭신청, 선택된 인던=", string.Join(", ", instances) + ", count=" + instances.Count);
+                            Log.I("Matching application, selected =", string.Join(", ", instances) + ", count=" + instances.Count);
                             fireEvent(EventType.MATCH_BEGIN, args.ToArray());
                         }
                     }
-                    // 취소
+                    // cancel
                     else if (status == 3)
                     {
                         state = reason == 8 ? State.QUEUED : State.IDLE;
                         //mainForm.overlayForm.CancelDutyFinder();
 
                         //Log.E("l-queue-stopped");
-                        Log.I("매칭취소, reason=" + reason);
+                        Log.I("Unmatch, reason=" + reason);
                         fireEvent(EventType.MATCH_END, new int[] { (int)MatchEndType.CANCELLED });
                     }
-                    // 입장함
+                    // Entered
                     else if (status == 6)
                     {
                         state = State.IDLE;
                         //mainForm.overlayForm.CancelDutyFinder();
 
                         //Log.I("l-queue-entered");
-                        Log.I("매칭입장함");
+                        Log.I("Match entry");
                         fireEvent(EventType.MATCH_END, new int[] { (int)MatchEndType.ENTER_INSTANCE });
                     }
-                    // 매칭됨 (글섭)
-                    else if (status == 4) //글섭에서 매칭 잡혔을 때 출력
+                    // Matching
+                    else if (status == 4) // Output when matched in the foreground
                     {
                         var roulette = data[20];
                         var code = BitConverter.ToUInt16(data, 22);
 
                         //Instance instance;
 
-                        //매칭된 인던 정보 확인불가시 매칭 정보 표기, 
+                        //If the matched indent information can not be checked,
                         if (roulette != 0)
                         {
                         //    instance = new Instance { Name = Data.GetRoulette(roulette).Name };
@@ -311,7 +311,7 @@ namespace App
                         state = State.MATCHED;
                        
 
-                        Log.I("매칭됨(글섭) 매칭종류=" + roulette + ", 매칭된 인던=" + code);
+                        Log.I("Matching (Gloss) Match type=" + roulette + ", Matched indones=" + code);
                         fireEvent(EventType.MATCH_ALERT, new int[] { roulette, code });
                     }
                 }
@@ -322,30 +322,30 @@ namespace App
 
                     if (status == 0)
                     {
-                        // 플레이어가 매칭 참가 확인 창에서 취소를 누르거나 참가 확인 제한 시간이 초과됨
-                        // 매칭 중단을 알리기 위해 상단 2db status 3 패킷이 연이어 옴
-                        log.i("매칭중단됨 status=" + status + ", 취소하거나 시간초과");
+                        // Player clicks Cancel in the Match Participation Confirmation window or the Participation Confirmation Timeout is exceeded
+                         // Upper 2db status 3 packets coming in to notify matching termination
+                        log.i("Matched stopped status=" + status + ", cancel or timeout");
                     }
                     if (status == 1)
                     {
-                        // 플레이어가 매칭 참가 확인 창에서 확인을 누름
-                        // 다른 매칭 인원들도 전부 확인을 눌렀을 경우 입장을 위해 상단 2db status 6 패킷이 옴
+                        // Player clicks OK in the matching entry confirmation window
+                        // If all other matching personnel have clicked OK, the top 2db status 6 packets for admission
                         //mainform.overlayform.stopblink();
-                        log.i("매칭됨 status=" + status + ", 참가 확인 누름 or 다른 사람들도 전부 확인 누름");
+                        log.i("Matched status =" + status + ", press confirm or others);
                     }*/
                 }
-                else if (opcode == 0x0121) //글로벌 서버
+                else if (opcode == 0x0121) // Global server
                 {
                     var status = data[5];
 
                     if (status == 128)
                     {
-                        // 매칭 참가 신청 확인 창에서 확인을 누름
+                        //Click OK on the Matching Application Confirmation window
                         //mainForm.overlayForm.StopBlink();
-                        Log.I("매칭됨, 매칭 참가 신청 확인 창에서 확인을 누름 (글로벌)");
+                        Log.I("Matching, Matching Click OK in the application confirmation window (Global)");
                     }
                 }
-                // 매칭된 상태에서 현황
+                // Status in matched state
                 else if (opcode == 0x0079)
                 {
                     var code = BitConverter.ToUInt16(data, 0);
@@ -358,21 +358,21 @@ namespace App
 
                     if (status == 1)
                     {
-                        // 인원 현황 패킷
+                        // Personnel status packet
                         var member = tank * 10000 + dps * 100 + healer;
 
                         if (state == State.MATCHED && lastMember != member)
                         {
-                            // 매칭도중일 때 인원 현황 패킷이 오고 마지막 인원 정보와 다른 경우에 누군가에 의해 큐가 취소된 경우.
+                            // If the queue status is canceled by someone when the status packet arrives at the time of matching and is different from the last person information.
                             state = State.QUEUED;
                             //mainForm.overlayForm.CancelDutyFinder();
-                            Log.I("매칭 진도, 누군가 취소함");
+                            Log.I("Match progress, someone canceled");
                         }
                         else if (state == State.IDLE)
                         {
-                            // 프로그램이 매칭 중간에 켜짐
+                            // Program is on in the middle of matching
                             state = State.QUEUED;
-                            //mainForm.overlayForm.SetDutyCount(-1); // 알 수 없음으로 설정함 (TODO: 알아낼 방법 있으면 정확히 나오게 수정하기)
+                            //mainForm.overlayForm.SetDutyCount(-1); // Set to unknown (TODO: If there is a way to find out, fix it to be correct)
                             //mainForm.overlayForm.SetDutyStatus(instance, tank, dps, healer);
                         }
                         else if (state == State.QUEUED)
@@ -384,18 +384,18 @@ namespace App
                     }
                     else if (status == 2)
                     {
-                        // 현재 매칭된 파티의 역할별 인원 수 정보
-                        // 조율 해제 상태여도 역할별로 정확히 날아옴
+                        // Information on the number of people by role of the currently matched party
+                        // Even if it is in un-tuned state,
                         //mainForm.overlayForm.SetMemberCount(tank, dps, healer);
                         return;
                     }
                     else if (status == 4)
                     {
-                        // 매칭 뒤 참가자 확인 현황 패킷
+                        // After Matching, Participant Confirmation Status Packet
                         //mainForm.overlayForm.SetConfirmStatus(instance, tank, dps, healer);
                     }
                     //Log.I("l-queue-updated", instance.Name, status, tank, instance.Tank, healer, instance.Healer, dps, instance.DPS);
-                    Log.I("매칭 진도, 인던코드=" + code + ", " + status + ", T " + tank + ", H " + healer + ", D " + dps);
+                    Log.I("Matching progress, code=" + code + ", " + status + ", T " + tank + ", H " + healer + ", D " + dps);
                     fireEvent(EventType.MATCH_PROGRESS, new int[] { code, status, tank, healer, dps });
                 }
                 else if (opcode == 0x0080)
