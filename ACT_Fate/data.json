@@ -21,7 +21,19 @@
     },
     "3088": {
       "name": {
-        "en": "Recall of Duty Spectacle for the Ages",
+        "en": "Recall of Duty",
+        "ko": "null",
+        "ja": "再演の叙事詩",
+        "fr": "La ballade des réminiscences",
+        "zh": "回顾英雄诗篇"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "167": {
+      "name": {
+        "en": "a Spectacle for the Ages",
         "ko": "null",
         "ja": "四国合同演習",
         "fr": "La grande manœuvre éorzéenne",
@@ -6087,7 +6099,7 @@
         "en": "Long Way Home",
         "ko": "집으로",
         "ja": "Long Way Home",
-        "fr": "Laissez-moi rentrer chez moi !",
+        "fr": "Laissez-moi rentrer chez moi !",
         "zh": "归乡路"
       },
       "area_code": {
@@ -6359,7 +6371,7 @@
         "en": "Sharknado",
         "ko": "냉철한 전략가",
         "ja": "Sharknado",
-        "fr": "Défi: qui veut la peau du requin ?",
+        "fr": "Défi: qui veut la peau du requin ?",
         "zh": "冷静的战略家——苍鲨肌伏尔"
       },
       "area_code": {
@@ -7111,7 +7123,7 @@
         "en": "Peryton, Perhaps",
         "ko": "전설의 거룡",
         "ja": "Peryton, Perhaps",
-        "fr": "Défi: qui a vu mon dragon ?",
+        "fr": "Défi: qui a vu mon dragon ?",
         "zh": "传说的巨龙——佩利冬"
       },
       "area_code": {
@@ -8839,7 +8851,7 @@
         "en": "Core Blimey",
         "ko": "청린 정제소 일손 돕기",
         "ja": "Core Blimey",
-        "fr": "Ne jetez pas les noyaux !",
+        "fr": "Ne jetez pas les noyaux !",
         "zh": "核心危机"
       },
       "area_code": {
@@ -9159,7 +9171,7 @@
         "en": "If I Only Had a Soul",
         "ko": "진리를 찾아서",
         "ja": "If I Only Had a Soul",
-        "fr": "Un golem, comment ça marche ?",
+        "fr": "Un golem, comment ça marche ?",
         "zh": "寻求真理"
       },
       "area_code": {
@@ -10599,7 +10611,7 @@
         "en": "Don't Disturb This Grove",
         "ko": "벌채부대 요격전",
         "ja": "Don't Disturb This Grove",
-        "fr": "Touche pas à mon arbre !",
+        "fr": "Touche pas à mon arbre !",
         "zh": "迎战采伐部队"
       },
       "area_code": {
@@ -13799,7 +13811,7 @@
         "en": "Anzu Trois",
         "ko": "검은 새",
         "ja": "Anzu Trois",
-        "fr": "Et zou, plus d'anzus !",
+        "fr": "Et zou, plus d'anzus !",
         "zh": "黑色怪鸟"
       },
       "area_code": {
@@ -14247,7 +14259,7 @@
         "en": "Pet, Smart",
         "ko": "충의의 요괴왕",
         "ja": "Pet, Smart",
-        "fr": "Défi: couchée, sale bête !",
+        "fr": "Défi: couchée, sale bête !",
         "zh": "忠义妖王——目支邻陀"
       },
       "area_code": {
@@ -14487,7 +14499,7 @@
         "en": "Do Spinners Dream of Electric Rooks",
         "ko": "꿈꾸는 무인기",
         "ja": "Do Spinners Dream of Electric Rooks",
-        "fr": "Défi: les drilles rêvent-ils de meules électriques ?",
+        "fr": "Défi: les drilles rêvent-ils de meules électriques ?",
         "zh": "有梦想的无人机——扭盘堡"
       },
       "area_code": {
