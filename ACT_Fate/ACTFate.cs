@@ -21,7 +21,7 @@ using System.Windows.Forms;
 [assembly: AssemblyTitle("FFXIV F.A.T.E")]
 [assembly: AssemblyDescription("Duty FATE Assist -- ACT Plugin")]
 [assembly: AssemblyCompany("Bluefissure")]
-[assembly: AssemblyVersion("1.2.4.2")]
+[assembly: AssemblyVersion("1.2.5.0")]
 
 namespace FFXIV_FATE_ACT_Plugin
 {
