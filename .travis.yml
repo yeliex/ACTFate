@@ -1,0 +1,6 @@
+language: csharp
+solution: ACT_Fate/ACT_Plugin.sln
+mono: none
+dotnet: 2.1.502
+script:
+ - dotnet restore
