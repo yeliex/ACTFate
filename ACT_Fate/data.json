@@ -1,7 +1,7 @@
 {
   "version": {
     "patch": "4.45",
-    "info": "pyros names not translated to zh"
+    "info": ""
   },
   "languages": {
     "en": "English",
@@ -15144,7 +15144,7 @@
         "ko": "Medias Res",
         "ja": "Medias Res",
         "fr": "Medias Res",
-        "zh": "Medias Res"
+        "zh": "洁白的惨叫——琉科西亚"
       },
       "area_code": {
         "en": "997",
@@ -15160,7 +15160,7 @@
         "ko": "High Voltage",
         "ja": "High Voltage",
         "fr": "High Voltage",
-        "zh": "High Voltage"
+        "zh": "狰狞的雷兽——佛劳洛斯"
       },
       "area_code": {
         "en": "997",
@@ -15176,7 +15176,7 @@
         "ko": "On the Non-existent",
         "ja": "On the Non-existent",
         "fr": "On the Non-existent",
-        "zh": "On the Non-existent"
+        "zh": "妖异中的辩论家——诡辩者"
       },
       "area_code": {
         "en": "997",
@@ -15192,7 +15192,7 @@
         "ko": "Creepy Doll",
         "ja": "Creepy Doll",
         "fr": "Creepy Doll",
-        "zh": "Creepy Doll"
+        "zh": "恐怖的人偶——格拉菲亚卡内"
       },
       "area_code": {
         "en": "997",
@@ -15208,7 +15208,7 @@
         "ko": "Quiet, Please",
         "ja": "Quiet, Please",
         "fr": "Quiet, Please",
-        "zh": "Quiet, Please"
+        "zh": "图书守护者——阿斯卡拉福斯"
       },
       "area_code": {
         "en": "997",
@@ -15224,7 +15224,7 @@
         "ko": "Up and Batym",
         "ja": "Up and Batym",
         "fr": "Up and Batym",
-        "zh": "Up and Batym"
+        "zh": "深渊贵族——巴钦大公爵"
       },
       "area_code": {
         "en": "997",
@@ -15240,7 +15240,7 @@
         "ko": "Rondo Aetolus",
         "ja": "Rondo Aetolus",
         "fr": "Rondo Aetolus",
-        "zh": "Rondo Aetolus"
+        "zh": "闪电的指挥者——埃托洛斯"
       },
       "area_code": {
         "en": "997",
@@ -15256,7 +15256,7 @@
         "ko": "Scorchpion King",
         "ja": "Scorchpion King",
         "fr": "Scorchpion King",
-        "zh": "Scorchpion King"
+        "zh": "灼热的刺剑——来萨特"
       },
       "area_code": {
         "en": "997",
@@ -15272,7 +15272,7 @@
         "ko": "Burning Hunger",
         "ja": "Burning Hunger",
         "fr": "Burning Hunger",
-        "zh": "Burning Hunger"
+        "zh": "炎热霸主——火巨人"
       },
       "area_code": {
         "en": "997",
@@ -15288,7 +15288,7 @@
         "ko": "Dry Iris",
         "ja": "Dry Iris",
         "fr": "Dry Iris",
-        "zh": "Dry Iris"
+        "zh": "落泪的海燕——伊丽丝"
       },
       "area_code": {
         "en": "997",
@@ -15304,7 +15304,7 @@
         "ko": "Thirty Whacks",
         "ja": "Thirty Whacks",
         "fr": "Thirty Whacks",
-        "zh": "Thirty Whacks"
+        "zh": "奇迹的生还者——佣兵雷姆普里克斯"
       },
       "area_code": {
         "en": "997",
@@ -15320,7 +15320,7 @@
         "ko": "Put Up Your Dux",
         "ja": "Put Up Your Dux",
         "fr": "Put Up Your Dux",
-        "zh": "Put Up Your Dux"
+        "zh": "雷兽统领——闪电督军"
       },
       "area_code": {
         "en": "997",
@@ -15336,7 +15336,7 @@
         "ko": "You Do Know Jack",
         "ja": "You Do Know Jack",
         "fr": "You Do Know Jack",
-        "zh": "You Do Know Jack"
+        "zh": "樵夫杰科的死亡对决"
       },
       "area_code": {
         "en": "997",
@@ -15352,7 +15352,7 @@
         "ko": "Mister Bright-eyes",
         "ja": "Mister Bright-eyes",
         "fr": "Mister Bright-eyes",
-        "zh": "Mister Bright-eyes"
+        "zh": "智慧与战斗之母——明眸"
       },
       "area_code": {
         "en": "997",
@@ -15368,7 +15368,7 @@
         "ko": "Haunter of the Dark",
         "ja": "Haunter of the Dark",
         "fr": "Haunter of the Dark",
-        "zh": "Haunter of the Dark"
+        "zh": "相反的双子——阴·阳"
       },
       "area_code": {
         "en": "997",
@@ -15384,7 +15384,7 @@
         "ko": "Heavens' Warg",
         "ja": "Heavens' Warg",
         "fr": "Heavens' Warg",
-        "zh": "Heavens' Warg"
+        "zh": "嘲讽的霜狼——斯库尔"
       },
       "area_code": {
         "en": "997",
@@ -15400,7 +15400,7 @@
         "ko": "Lost Epic",
         "ja": "Lost Epic",
         "fr": "Lost Epic",
-        "zh": "Lost Epic"
+        "zh": "炎蝶的女王——彭忒西勒亚"
       },
       "area_code": {
         "en": "997",
@@ -15416,7 +15416,7 @@
         "ko": "We're All Mad Here",
         "ja": "We're All Mad Here",
         "fr": "We're All Mad Here",
-        "zh": "We're All Mad Here"
+        "zh": "瞄准珊瑚的幸福兔"
       },
       "area_code": {
         "en": "997",
@@ -15432,7 +15432,7 @@
         "ko": "Uncommon Nonsense",
         "ja": "Uncommon Nonsense",
         "fr": "Uncommon Nonsense",
-        "zh": "Uncommon Nonsense"
+        "zh": "困入岩石的幸福兔"
       },
       "area_code": {
         "en": "997",
