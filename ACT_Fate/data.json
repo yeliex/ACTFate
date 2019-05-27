@@ -1,4 +1,8 @@
 {
+  "version": {
+    "patch": "4.45",
+    "info": ""
+  },
   "languages": {
     "en": "English",
     "ko": "한국어",
@@ -4950,6 +4954,18 @@
       "t": "0",
       "h": "0",
       "d": "0"
+    },
+    "598": {
+      "name": {
+        "en": "the Forbidden Land, Eureka Pyros",
+        "ko": "에우레카: 피로스",
+        "ja": "禁断の地 エウレカ：ピューロス編",
+        "fr": "Eurêka Pyros",
+        "zh": "禁地优雷卡 涌火之地"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
     }
   },
   "areas": {
@@ -5114,20 +5130,6 @@
       "fr": "Azys Lla",
       "zh": "魔大陆阿济兹拉"
     },
-    "999": {
-      "en": "Eureka - Anemos",
-      "ko": "에우레카 아네모스",
-      "ja": "null",
-      "fr": "null",
-      "zh": "null"
-    },
-    "998": {
-      "en": "Eureka - Pagos",
-      "ko": "에우레카 파고스",
-      "ja": "null",
-      "fr": "null",
-      "zh": "优雷卡恒冰之地"
-    },
     "612": {
       "en": "Stormblood and Events",
       "ko": "홍련의 해방자 및 이벤트",
@@ -5155,13 +5157,6 @@
       "ja": "パゴス",
       "fr": "Pagos",
       "zh": "null"
-    },
-    "732": {
-      "en": "null",
-      "ko": "null",
-      "ja": "null",
-      "fr": "null",
-      "zh": "优雷卡常风之地"
     },
     "613": {
       "en": "null",
@@ -5197,6 +5192,27 @@
       "ja": "null",
       "fr": "null",
       "zh": "太阳神草原"
+    },
+    "999": {
+      "en": "Eureka - Anemos",
+      "ko": "에우레카 아네모스",
+      "ja": "Eureka - Anemos",
+      "fr": "Eureka - Anemos",
+      "zh": "优雷卡常风之地"
+    },
+    "998": {
+      "en": "Eureka - Pagos",
+      "ko": "에우레카 파고스",
+      "ja": "Eureka - Pagos",
+      "fr": "Eureka - Pagos",
+      "zh": "优雷卡恒冰之地"
+    },
+    "997": {
+      "en": "Eureka - Pyros",
+      "ko": "Eureka - Pyros",
+      "ja": "Eureka - Pyros",
+      "fr": "Eureka - Pyros",
+      "zh": "优雷卡涌火之地"
     },
     "515": {
       "en": "null",
@@ -14523,7 +14539,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1329": {
@@ -14539,7 +14555,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1331": {
@@ -14555,7 +14571,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1332": {
@@ -14571,7 +14587,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1333": {
@@ -14587,7 +14603,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1334": {
@@ -14603,7 +14619,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1335": {
@@ -14619,7 +14635,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1336": {
@@ -14635,7 +14651,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1337": {
@@ -14651,7 +14667,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1338": {
@@ -14667,7 +14683,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1339": {
@@ -14683,7 +14699,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1340": {
@@ -14699,7 +14715,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1341": {
@@ -14715,7 +14731,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1342": {
@@ -14731,7 +14747,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1343": {
@@ -14747,7 +14763,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1344": {
@@ -14763,7 +14779,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1345": {
@@ -14779,7 +14795,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1346": {
@@ -14795,7 +14811,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1347": {
@@ -14811,7 +14827,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1348": {
@@ -14827,7 +14843,7 @@
         "ko": "999",
         "ja": "990",
         "fr": "990",
-        "zh": "732"
+        "zh": "999"
       }
     },
     "1351": {
@@ -15132,6 +15148,310 @@
         "ja": "991",
         "fr": "991",
         "zh": "998"
+      }
+    },
+    "1388": {
+      "name": {
+        "en": "Medias Res",
+        "ko": "Medias Res",
+        "ja": "Medias Res",
+        "fr": "Medias Res",
+        "zh": "洁白的惨叫——琉科西亚"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1389": {
+      "name": {
+        "en": "High Voltage",
+        "ko": "High Voltage",
+        "ja": "High Voltage",
+        "fr": "High Voltage",
+        "zh": "狰狞的雷兽——佛劳洛斯"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1390": {
+      "name": {
+        "en": "On the Non-existent",
+        "ko": "On the Non-existent",
+        "ja": "On the Non-existent",
+        "fr": "On the Non-existent",
+        "zh": "妖异中的辩论家——诡辩者"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1391": {
+      "name": {
+        "en": "Creepy Doll",
+        "ko": "Creepy Doll",
+        "ja": "Creepy Doll",
+        "fr": "Creepy Doll",
+        "zh": "恐怖的人偶——格拉菲亚卡内"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1392": {
+      "name": {
+        "en": "Quiet, Please",
+        "ko": "Quiet, Please",
+        "ja": "Quiet, Please",
+        "fr": "Quiet, Please",
+        "zh": "图书守护者——阿斯卡拉福斯"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1393": {
+      "name": {
+        "en": "Up and Batym",
+        "ko": "Up and Batym",
+        "ja": "Up and Batym",
+        "fr": "Up and Batym",
+        "zh": "深渊贵族——巴钦大公爵"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1394": {
+      "name": {
+        "en": "Rondo Aetolus",
+        "ko": "Rondo Aetolus",
+        "ja": "Rondo Aetolus",
+        "fr": "Rondo Aetolus",
+        "zh": "闪电的指挥者——埃托洛斯"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1395": {
+      "name": {
+        "en": "Scorchpion King",
+        "ko": "Scorchpion King",
+        "ja": "Scorchpion King",
+        "fr": "Scorchpion King",
+        "zh": "灼热的刺剑——来萨特"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1396": {
+      "name": {
+        "en": "Burning Hunger",
+        "ko": "Burning Hunger",
+        "ja": "Burning Hunger",
+        "fr": "Burning Hunger",
+        "zh": "炎热霸主——火巨人"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1397": {
+      "name": {
+        "en": "Dry Iris",
+        "ko": "Dry Iris",
+        "ja": "Dry Iris",
+        "fr": "Dry Iris",
+        "zh": "落泪的海燕——伊丽丝"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1398": {
+      "name": {
+        "en": "Thirty Whacks",
+        "ko": "Thirty Whacks",
+        "ja": "Thirty Whacks",
+        "fr": "Thirty Whacks",
+        "zh": "奇迹的生还者——佣兵雷姆普里克斯"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1399": {
+      "name": {
+        "en": "Put Up Your Dux",
+        "ko": "Put Up Your Dux",
+        "ja": "Put Up Your Dux",
+        "fr": "Put Up Your Dux",
+        "zh": "雷兽统领——闪电督军"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1400": {
+      "name": {
+        "en": "You Do Know Jack",
+        "ko": "You Do Know Jack",
+        "ja": "You Do Know Jack",
+        "fr": "You Do Know Jack",
+        "zh": "樵夫杰科的死亡对决"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1401": {
+      "name": {
+        "en": "Mister Bright-eyes",
+        "ko": "Mister Bright-eyes",
+        "ja": "Mister Bright-eyes",
+        "fr": "Mister Bright-eyes",
+        "zh": "智慧与战斗之母——明眸"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1402": {
+      "name": {
+        "en": "Haunter of the Dark",
+        "ko": "Haunter of the Dark",
+        "ja": "Haunter of the Dark",
+        "fr": "Haunter of the Dark",
+        "zh": "相反的双子——阴·阳"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1403": {
+      "name": {
+        "en": "Heavens' Warg",
+        "ko": "Heavens' Warg",
+        "ja": "Heavens' Warg",
+        "fr": "Heavens' Warg",
+        "zh": "嘲讽的霜狼——斯库尔"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1404": {
+      "name": {
+        "en": "Lost Epic",
+        "ko": "Lost Epic",
+        "ja": "Lost Epic",
+        "fr": "Lost Epic",
+        "zh": "炎蝶的女王——彭忒西勒亚"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1407": {
+      "name": {
+        "en": "We're All Mad Here",
+        "ko": "We're All Mad Here",
+        "ja": "We're All Mad Here",
+        "fr": "We're All Mad Here",
+        "zh": "瞄准珊瑚的幸福兔"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
+      }
+    },
+    "1408": {
+      "name": {
+        "en": "Uncommon Nonsense",
+        "ko": "Uncommon Nonsense",
+        "ja": "Uncommon Nonsense",
+        "fr": "Uncommon Nonsense",
+        "zh": "困入岩石的幸福兔"
+      },
+      "area_code": {
+        "en": "997",
+        "ko": "997",
+        "ja": "997",
+        "fr": "997",
+        "zh": "997"
       }
     },
     "932": {

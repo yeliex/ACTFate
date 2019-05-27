@@ -299,14 +299,16 @@ namespace App
                         //Instance instance;
 
                         //If the matched indent information can not be checked,
+                        /*
                         if (roulette != 0)
                         {
-                        //    instance = new Instance { Name = Data.GetRoulette(roulette).Name };
+                            instance = new Instance { Name = Data.GetRoulette(roulette).Name };
                         }
                         else
                         {
-                        //    instance = Data.GetInstance(code);
+                            instance = Data.GetInstance(code);
                         }
+                        */
 
                         state = State.MATCHED;
                        

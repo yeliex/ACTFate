@@ -21,7 +21,7 @@ using System.Windows.Forms;
 [assembly: AssemblyTitle("FFXIV F.A.T.E")]
 [assembly: AssemblyDescription("Duty FATE Assist -- ACT Plugin")]
 [assembly: AssemblyCompany("Bluefissure")]
-[assembly: AssemblyVersion("1.2.5.0")]
+[assembly: AssemblyVersion("1.2.6.0")]
 
 namespace FFXIV_FATE_ACT_Plugin
 {
@@ -110,18 +110,17 @@ namespace FFXIV_FATE_ACT_Plugin
         {
             xmlSettings.AddControlSetting(comboBoxLanguage.Name, comboBoxLanguage);
             xmlSettings.AddControlSetting(checkBoxToastNotification.Name, checkBoxToastNotification);
-
             xmlSettings.AddControlSetting(checkBoxTTS.Name, checkBoxTTS);
             xmlSettings.AddControlSetting(checkBoxUploader.Name, checkBoxUploader);
             xmlSettings.AddControlSetting(postURL.Name, postURL);
             xmlSettings.AddControlSetting(checkBoxDutyFinder.Name, checkBoxDutyFinder);
+            xmlSettings.AddBooleanSetting("cheatRoulette");
             xmlSettings.AddStringSetting("chkFates");
 
             if (File.Exists(settingsFile))
             {
                 FileStream fs = new FileStream(settingsFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 XmlTextReader xReader = new XmlTextReader(fs);
-
                 try
                 {
                     while (xReader.Read())
@@ -143,9 +142,7 @@ namespace FFXIV_FATE_ACT_Plugin
             }
             isUploaderEnable = checkBoxUploader.Checked;
             postURL.Enabled = !isUploaderEnable;
-
             isTTSEnable = checkBoxTTS.Checked;
-
             isDutyAlertEnable = checkBoxDutyFinder.Checked;
             isToastNotificationEnable = checkBoxToastNotification.Checked;
         }
@@ -526,6 +523,26 @@ namespace FFXIV_FATE_ACT_Plugin
             }
             return code.ToString();
         }
+        private string getFinderTextNotification(int roulette, int code)
+        {
+            try
+            {
+                if (roulette != 0)
+                {
+                    if (cheatRoulette)
+                        return getTextRoulette(roulette) + " >> " + getTextInstance(code);
+                    else
+                        return getTextRoulette(roulette);
+                }
+                else
+                    return getTextInstance(code);
+            }
+            catch (Exception e)
+            {
+                Log.Ex(e, "ignore");
+            }
+            return roulette.ToString() + " >> " + code.ToString();
+        }
 
 
         private void Network_onReceiveEvent(int pid, App.Network.EventType eventType, int[] args)
@@ -574,20 +591,16 @@ namespace FFXIV_FATE_ACT_Plugin
                     break;
                 case App.Network.EventType.MATCH_ALERT:
                     text += getTextRoulette(args[0]) + ((char)007); pos++;
-
                     text += (args[1].ToString() + ((char)007).ToString());
                     text += getTextInstance(args[1]) + ((char)007); pos++;
                     break;
-
             }
-
             for (int i = pos; i < args.Length; i++)
             {
                 text += args[i] + ((char)007);
             }
 
-            sendToACT(text);
-
+            //sendToACT(text);
             postToToastWindowsNotificationIfNeeded(server, eventType, args);
             postToURLIfNeeded(server, eventType, args);
             postToTTSIfNeeded(server, eventType, args);
@@ -616,6 +629,7 @@ namespace FFXIV_FATE_ACT_Plugin
 
         private bool isUploaderEnable = false;
         private string chkFates;
+        private bool cheatRoulette;
         private ConcurrentStack<string> SelectedFates = new ConcurrentStack<string>();
 
         private void loadJSONData()
@@ -761,6 +775,7 @@ namespace FFXIV_FATE_ACT_Plugin
             if (isUploaderEnable == false) return;
 
             string head = networks.Count <= 1 ? "" : "[" + server + "] ";
+            
             switch (eventType)
             {
                 case App.Network.EventType.MATCH_ALERT: 
@@ -768,7 +783,7 @@ namespace FFXIV_FATE_ACT_Plugin
                     //text += getTextInstance(args[1]) + "|"; pos++;
                     if (isDutyAlertEnable)
                     {
-                        postToURL(head + getTextRoulette(args[0]) + " >> " + getTextInstance(args[1]));
+                        postToURL(head + getFinderTextNotification(args[0], args[1]));
                     }
                     break;
                 case App.Network.EventType.FATE_BEGIN:
@@ -794,7 +809,7 @@ namespace FFXIV_FATE_ACT_Plugin
                     //text += getTextInstance(args[1]) + "|"; pos++;
                     if (isDutyAlertEnable)
                     {
-                       toastWindowNotification(head + getTextRoulette(args[0]) + " >> " + getTextInstance(args[1]));
+                       toastWindowNotification(head + getFinderTextNotification(args[0], args[1]));
                     }
                     break;
                 case App.Network.EventType.FATE_BEGIN:
@@ -821,7 +836,7 @@ namespace FFXIV_FATE_ACT_Plugin
                     //text += getTextInstance(args[1]) + "|"; pos++;
                     if (isDutyAlertEnable)
                     {
-                        TTS(head + getTextRoulette(args[0]) + " " + getTextInstance(args[1]));
+                        TTS(head + getFinderTextNotification(args[0], args[1]));
                     }
                     break;
                 case App.Network.EventType.FATE_BEGIN:
@@ -839,14 +854,21 @@ namespace FFXIV_FATE_ACT_Plugin
         {
             string url = postURL.Text;
             if (url == null || url == "" ) return;
-
-            using (WebClient client = new WebClient())
+            try
             {
-                client.UploadValuesAsync(new Uri(url), "POST", new NameValueCollection()
+                using (WebClient client = new WebClient())
+                {
+                    client.UploadValuesAsync(new Uri(url), "POST", new NameValueCollection()
                 {
                     { "text", message }
                 });
+                }
             }
+            catch (Exception e)
+            {
+                Log.Ex(e, "ignore");
+            }
+            
         }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
