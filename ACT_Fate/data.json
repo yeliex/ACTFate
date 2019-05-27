@@ -5130,6 +5130,27 @@
       "fr": "Azys Lla",
       "zh": "魔大陆阿济兹拉"
     },
+    "999": {
+      "en": "Eureka - Anemos",
+      "ko": "에우레카 아네모스",
+      "ja": "Eureka - Anemos",
+      "fr": "Eureka - Anemos",
+      "zh": "优雷卡常风之地"
+    },
+    "998": {
+      "en": "Eureka - Pagos",
+      "ko": "에우레카 파고스",
+      "ja": "Eureka - Pagos",
+      "fr": "Eureka - Pagos",
+      "zh": "优雷卡恒冰之地"
+    },
+    "997": {
+      "en": "Eureka - Pyros",
+      "ko": "Eureka - Pyros",
+      "ja": "Eureka - Pyros",
+      "fr": "Eureka - Pyros",
+      "zh": "优雷卡涌火之地"
+    },
     "612": {
       "en": "Stormblood and Events",
       "ko": "홍련의 해방자 및 이벤트",
@@ -5192,27 +5213,6 @@
       "ja": "null",
       "fr": "null",
       "zh": "太阳神草原"
-    },
-    "999": {
-      "en": "Eureka - Anemos",
-      "ko": "에우레카 아네모스",
-      "ja": "Eureka - Anemos",
-      "fr": "Eureka - Anemos",
-      "zh": "优雷卡常风之地"
-    },
-    "998": {
-      "en": "Eureka - Pagos",
-      "ko": "에우레카 파고스",
-      "ja": "Eureka - Pagos",
-      "fr": "Eureka - Pagos",
-      "zh": "优雷卡恒冰之地"
-    },
-    "997": {
-      "en": "Eureka - Pyros",
-      "ko": "Eureka - Pyros",
-      "ja": "Eureka - Pyros",
-      "fr": "Eureka - Pyros",
-      "zh": "优雷卡涌火之地"
     },
     "515": {
       "en": "null",
