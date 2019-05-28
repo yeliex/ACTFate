@@ -1,6 +1,6 @@
 {
   "version": {
-    "patch": "4.45",
+    "patch": "CN 4.5",
     "info": ""
   },
   "languages": {
@@ -2021,7 +2021,7 @@
         "ko": "null",
         "ja": "「暁」の少年",
         "fr": "「暁」の少年",
-        "zh": "「暁」の少年"
+        "zh": "拂晓的少年"
       },
       "t": "0",
       "h": "0",
@@ -2033,7 +2033,7 @@
         "ko": "null",
         "ja": "楔石の虚",
         "fr": "楔石の虚",
-        "zh": "楔石の虚"
+        "zh": "楔石洞"
       },
       "t": "0",
       "h": "0",
@@ -4985,7 +4985,7 @@
         "ja": "All's Well That Starts Well",
         "fr": "All's Well That Starts Well",
         "ko": "All's Well That Starts Well",
-        "zh": "All's Well That Starts Well"
+        "zh": "出道战"
       },
       "t": "0",
       "h": "0",
@@ -4997,7 +4997,7 @@
         "ja": "the Ghimlyt Dark",
         "fr": "the Ghimlyt Dark",
         "ko": "the Ghimlyt Dark",
-        "zh": "the Ghimlyt Dark"
+        "zh": "国境战线基姆利特暗区"
       },
       "t": "0",
       "h": "0",
@@ -5009,7 +5009,7 @@
         "ja": "Much Ado About Pudding",
         "fr": "Much Ado About Pudding",
         "ko": "Much Ado About Pudding",
-        "zh": "Much Ado About Pudding"
+        "zh": "布丁拼盘"
       },
       "t": "0",
       "h": "0",
@@ -5021,7 +5021,7 @@
         "ja": "Waiting for Golem",
         "fr": "Waiting for Golem",
         "ko": "Waiting for Golem",
-        "zh": "Waiting for Golem"
+        "zh": "最初的岩壁——辛巴克那"
       },
       "t": "0",
       "h": "0",
@@ -5033,7 +5033,7 @@
         "ja": "Gentlemen Prefer Swords",
         "fr": "Gentlemen Prefer Swords",
         "ko": "Gentlemen Prefer Swords",
-        "zh": "Gentlemen Prefer Swords"
+        "zh": "怪力铁巨人——克利俄斯"
       },
       "t": "0",
       "h": "0",
@@ -5045,7 +5045,7 @@
         "ja": "The Threepenny Turtles",
         "fr": "The Threepenny Turtles",
         "ko": "The Threepenny Turtles",
-        "zh": "The Threepenny Turtles"
+        "zh": "金币龟兄弟"
       },
       "t": "0",
       "h": "0",
@@ -5057,7 +5057,7 @@
         "ja": "Eye Society",
         "fr": "Eye Society",
         "ko": "Eye Society",
-        "zh": "Eye Society"
+        "zh": "铁鹰战士"
       },
       "t": "0",
       "h": "0",
@@ -5069,7 +5069,7 @@
         "ja": "A Chorus Slime",
         "fr": "A Chorus Slime",
         "ko": "A Chorus Slime",
-        "zh": "A Chorus Slime"
+        "zh": "粘液怪合唱团"
       },
       "t": "0",
       "h": "0",
@@ -5081,7 +5081,7 @@
         "ja": "Bomb-edy of Errors",
         "fr": "Bomb-edy of Errors",
         "ko": "Bomb-edy of Errors",
-        "zh": "Bomb-edy of Errors"
+        "zh": "青之牙、红之牙"
       },
       "t": "0",
       "h": "0",
@@ -5093,7 +5093,7 @@
         "ja": "To Kill a Mockingslime",
         "fr": "To Kill a Mockingslime",
         "ko": "To Kill a Mockingslime",
-        "zh": "To Kill a Mockingslime"
+        "zh": "七彩甜点——棉花糖"
       },
       "t": "0",
       "h": "0",
@@ -5105,7 +5105,7 @@
         "ja": "A Little Knight Music",
         "fr": "A Little Knight Music",
         "ko": "A Little Knight Music",
-        "zh": "A Little Knight Music"
+        "zh": "无头王者——幽黑曲偶"
       },
       "t": "0",
       "h": "0",
@@ -5117,7 +5117,7 @@
         "ja": "Some Like It Excruciatingly Hot",
         "fr": "Some Like It Excruciatingly Hot",
         "ko": "Some Like It Excruciatingly Hot",
-        "zh": "Some Like It Excruciatingly Hot"
+        "zh": "爆前速攻"
       },
       "t": "0",
       "h": "0",
@@ -5129,7 +5129,7 @@
         "ja": "The Plant-om of the Opera",
         "fr": "The Plant-om of the Opera",
         "ko": "The Plant-om of the Opera",
-        "zh": "The Plant-om of the Opera"
+        "zh": "寄生植物——白鹭花"
       },
       "t": "0",
       "h": "0",
@@ -5141,7 +5141,7 @@
         "ja": "Beauty and a Beast",
         "fr": "Beauty and a Beast",
         "ko": "Beauty and a Beast",
-        "zh": "Beauty and a Beast"
+        "zh": "猩红死妖姬——卡米拉"
       },
       "t": "0",
       "h": "0",
@@ -5153,7 +5153,7 @@
         "ja": "Blobs in the Woods",
         "fr": "Blobs in the Woods",
         "ko": "Blobs in the Woods",
-        "zh": "Blobs in the Woods"
+        "zh": "陪葬"
       },
       "t": "0",
       "h": "0",
@@ -5165,7 +5165,7 @@
         "ja": "The Me Nobody Nodes",
         "fr": "The Me Nobody Nodes",
         "ko": "The Me Nobody Nodes",
-        "zh": "The Me Nobody Nodes"
+        "zh": "来自亚拉戈的威胁——斗兽系统"
       },
       "t": "0",
       "h": "0",
@@ -5177,7 +5177,7 @@
         "ja": "Sunset Bull-evard",
         "fr": "Sunset Bull-evard",
         "ko": "Sunset Bull-evard",
-        "zh": "Sunset Bull-evard"
+        "zh": "怪力兽王——迪克巴朗"
       },
       "t": "0",
       "h": "0",
@@ -5189,7 +5189,7 @@
         "ja": "The Sword of Music",
         "fr": "The Sword of Music",
         "ko": "The Sword of Music",
-        "zh": "The Sword of Music"
+        "zh": "刚柔铁巨人——克利俄斯改"
       },
       "t": "0",
       "h": "0",
@@ -5201,7 +5201,7 @@
         "ja": "Midsummer Night's Explosion",
         "fr": "Midsummer Night's Explosion",
         "ko": "Midsummer Night's Explosion",
-        "zh": "Midsummer Night's Explosion"
+        "zh": "爆破死斗"
       },
       "t": "0",
       "h": "0",
@@ -5213,7 +5213,7 @@
         "ja": "On a Clear Day You Can Smell Forever",
         "fr": "On a Clear Day You Can Smell Forever",
         "ko": "On a Clear Day You Can Smell Forever",
-        "zh": "On a Clear Day You Can Smell Forever"
+        "zh": "魅惑芳香——反光丽贝卡"
       },
       "t": "0",
       "h": "0",
@@ -5225,7 +5225,7 @@
         "ja": "Miss Typhon",
         "fr": "Miss Typhon",
         "ko": "Miss Typhon",
-        "zh": "Miss Typhon"
+        "zh": "著名组合——奥尔特罗斯&提丰"
       },
       "t": "0",
       "h": "0",
@@ -5237,7 +5237,7 @@
         "ja": "Chimera on a Hot Tin Roof",
         "fr": "Chimera on a Hot Tin Roof",
         "ko": "Chimera on a Hot Tin Roof",
-        "zh": "Chimera on a Hot Tin Roof"
+        "zh": "愤怒合成兽——阿帕德马克"
       },
       "t": "0",
       "h": "0",
@@ -5249,7 +5249,7 @@
         "ja": "Here Comes the Boom",
         "fr": "Here Comes the Boom",
         "ko": "Here Comes the Boom",
-        "zh": "Here Comes the Boom"
+        "zh": "爆炸湮灭——先祖爆弹怪"
       },
       "t": "0",
       "h": "0",
@@ -5261,7 +5261,7 @@
         "ja": "Behemoths and Broomsticks",
         "fr": "Behemoths and Broomsticks",
         "ko": "Behemoths and Broomsticks",
-        "zh": "Behemoths and Broomsticks"
+        "zh": "魔兽皇太子——贝希摩斯太子"
       },
       "t": "0",
       "h": "0",
@@ -5273,7 +5273,7 @@
         "ja": "Amazing Technicolor Pit Fiends",
         "fr": "Amazing Technicolor Pit Fiends",
         "ko": "Amazing Technicolor Pit Fiends",
-        "zh": "Amazing Technicolor Pit Fiends"
+        "zh": "异形人偶师——艾匹罗基"
       },
       "t": "0",
       "h": "0",
@@ -5285,7 +5285,7 @@
         "ja": "Dirty Rotten Azulmagia",
         "fr": "Dirty Rotten Azulmagia",
         "ko": "Dirty Rotten Azulmagia",
-        "zh": "Dirty Rotten Azulmagia"
+        "zh": "邪恶青魔法师——启示者"
       },
       "t": "0",
       "h": "0",
@@ -5297,7 +5297,7 @@
         "ja": "the Orbonne Monastery",
         "fr": "the Orbonne Monastery",
         "ko": "the Orbonne Monastery",
-        "zh": "the Orbonne Monastery"
+        "zh": "乐欲之所瓯博讷修道院"
       },
       "t": "0",
       "h": "0",
@@ -5309,7 +5309,7 @@
         "ja": "the Wreath of Snakes",
         "fr": "the Wreath of Snakes",
         "ko": "the Wreath of Snakes",
-        "zh": "the Wreath of Snakes"
+        "zh": "青龙镇魂战"
       },
       "t": "0",
       "h": "0",
@@ -5321,7 +5321,7 @@
         "ja": "the Wreath of Snakes (Extreme)",
         "fr": "the Wreath of Snakes (Extreme)",
         "ko": "the Wreath of Snakes (Extreme)",
-        "zh": "the Wreath of Snakes (Extreme)"
+        "zh": "青龙诗魂战"
       },
       "t": "0",
       "h": "0",
@@ -5333,7 +5333,7 @@
         "ja": "Air Force One",
         "fr": "Air Force One",
         "ko": "Air Force One",
-        "zh": "Air Force One"
+        "zh": "空军装甲驾驶员"
       },
       "t": "0",
       "h": "0",
@@ -5345,7 +5345,7 @@
         "ja": "Air Force One",
         "fr": "Air Force One",
         "ko": "Air Force One",
-        "zh": "Air Force One"
+        "zh": "空军装甲驾驶员"
       },
       "t": "0",
       "h": "0",
@@ -5357,7 +5357,7 @@
         "ja": "Air Force One",
         "fr": "Air Force One",
         "ko": "Air Force One",
-        "zh": "Air Force One"
+        "zh": "空军装甲驾驶员"
       },
       "t": "0",
       "h": "0",
@@ -5369,7 +5369,7 @@
         "ja": "Novice Mahjong (Ranked)",
         "fr": "Novice Mahjong (Ranked)",
         "ko": "Novice Mahjong (Ranked)",
-        "zh": "Novice Mahjong (Ranked)"
+        "zh": "多玛方城战：一般桌（段位战）"
       },
       "t": "0",
       "h": "0",
@@ -5381,7 +5381,7 @@
         "ja": "Advanced Mahjong (Ranked)",
         "fr": "Advanced Mahjong (Ranked)",
         "ko": "Advanced Mahjong (Ranked)",
-        "zh": "Advanced Mahjong (Ranked)"
+        "zh": "多玛方城战：有段桌（段位战）"
       },
       "t": "0",
       "h": "0",
@@ -5393,7 +5393,7 @@
         "ja": "Four-player Mahjong (Kuitan Enabled)",
         "fr": "Four-player Mahjong (Kuitan Enabled)",
         "ko": "Four-player Mahjong (Kuitan Enabled)",
-        "zh": "Four-player Mahjong (Kuitan Enabled)"
+        "zh": "多玛方城战：4人亲友桌（带食断）"
       },
       "t": "0",
       "h": "0",
@@ -5405,7 +5405,7 @@
         "ja": "Four-player Mahjong (Kuitan Disabled)",
         "fr": "Four-player Mahjong (Kuitan Disabled)",
         "ko": "Four-player Mahjong (Kuitan Disabled)",
-        "zh": "Four-player Mahjong (Kuitan Disabled)"
+        "zh": "多玛方城战：4人亲友桌（不带食断）"
       },
       "t": "0",
       "h": "0",
@@ -5574,27 +5574,6 @@
       "fr": "Azys Lla",
       "zh": "魔大陆阿济兹拉"
     },
-    "999": {
-      "en": "Eureka - Anemos",
-      "ko": "에우레카 아네모스",
-      "ja": "Eureka - Anemos",
-      "fr": "Eureka - Anemos",
-      "zh": "优雷卡常风之地"
-    },
-    "998": {
-      "en": "Eureka - Pagos",
-      "ko": "에우레카 파고스",
-      "ja": "Eureka - Pagos",
-      "fr": "Eureka - Pagos",
-      "zh": "优雷卡恒冰之地"
-    },
-    "997": {
-      "en": "Eureka - Pyros",
-      "ko": "Eureka - Pyros",
-      "ja": "Eureka - Pyros",
-      "fr": "Eureka - Pyros",
-      "zh": "优雷卡涌火之地"
-    },
     "612": {
       "en": "Stormblood and Events",
       "ko": "홍련의 해방자 및 이벤트",
@@ -5657,6 +5636,27 @@
       "ja": "null",
       "fr": "null",
       "zh": "太阳神草原"
+    },
+    "999": {
+      "en": "Eureka - Anemos",
+      "ko": "에우레카 아네모스",
+      "ja": "Eureka - Anemos",
+      "fr": "Eureka - Anemos",
+      "zh": "优雷卡常风之地"
+    },
+    "998": {
+      "en": "Eureka - Pagos",
+      "ko": "에우레카 파고스",
+      "ja": "Eureka - Pagos",
+      "fr": "Eureka - Pagos",
+      "zh": "优雷卡恒冰之地"
+    },
+    "997": {
+      "en": "Eureka - Pyros",
+      "ko": "Eureka - Pyros",
+      "ja": "Eureka - Pyros",
+      "fr": "Eureka - Pyros",
+      "zh": "优雷卡涌火之地"
     },
     "515": {
       "en": "null",
