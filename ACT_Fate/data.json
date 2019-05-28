@@ -1169,7 +1169,7 @@
         "ko": "null",
         "ja": "宝物庫 ウズネアカナル祭殿",
         "fr": "le Temple sacré d'Uznair",
-        "zh": "null"
+        "zh": "运河宝物库神殿"
       },
       "t": "0",
       "h": "0",
@@ -1601,7 +1601,7 @@
         "ko": "null",
         "ja": "新生祭軍事演習",
         "fr": "les grandes manœuvres commémoratives",
-        "zh": "null"
+        "zh": "灾厄重现军事演习"
       },
       "t": "0",
       "h": "0",
@@ -2021,7 +2021,7 @@
         "ko": "null",
         "ja": "「暁」の少年",
         "fr": "「暁」の少年",
-        "zh": "拂晓的少年"
+        "zh": "「暁」の少年"
       },
       "t": "0",
       "h": "0",
@@ -2033,7 +2033,7 @@
         "ko": "null",
         "ja": "楔石の虚",
         "fr": "楔石の虚",
-        "zh": "null"
+        "zh": "楔石の虚"
       },
       "t": "0",
       "h": "0",
@@ -2053,7 +2053,7 @@
     },
     "2": {
       "name": {
-        "en": "the Tam-Tara Deepcroft",
+        "en": "the Tam–Tara Deepcroft",
         "ko": "탐타라 묘소",
         "ja": "地下霊殿 タムタラの墓所",
         "fr": "l'Hypogée de Tam-Tara",
@@ -2089,7 +2089,7 @@
     },
     "1": {
       "name": {
-        "en": "the Thousand Maws of Toto-Rak",
+        "en": "the Thousand Maws of Toto–Rak",
         "ko": "토토라크 감옥",
         "ja": "監獄廃墟 トトラクの千獄",
         "fr": "les Mille Gueules de Toto-Rak",
@@ -2317,7 +2317,7 @@
     },
     "24": {
       "name": {
-        "en": "the Tam-Tara Deepcroft (Hard)",
+        "en": "the Tam–Tara Deepcroft (Hard)",
         "ko": "탐타라 묘소 (어려움)",
         "ja": "惨劇霊殿 タムタラの墓所 (Hard)",
         "fr": "l'Hypogée de Tam-Tara (brutal)",
@@ -3145,7 +3145,7 @@
     },
     "72": {
       "name": {
-        "en": "the {{Italic|Whorleater}} (Hard)",
+        "en": "the <Emphasis>Whorleater</Emphasis> (Hard)",
         "ko": "진 리바이어선 토벌전",
         "ja": "真リヴァイアサン討滅戦",
         "fr": "le Briseur de marées (brutal)",
@@ -3253,7 +3253,7 @@
     },
     "73": {
       "name": {
-        "en": "the {{Italic|Whorleater}} (Extreme)",
+        "en": "the <Emphasis>Whorleater</Emphasis> (Extreme)",
         "ko": "극 리바이어선 토벌전",
         "ja": "極リヴァイアサン討滅戦",
         "fr": "le Briseur de marées (extrême)",
@@ -4805,7 +4805,7 @@
         "ko": "천궁탑 (1-10)",
         "ja": "アメノミハシラ 1～10層",
         "fr": "le Pilier des Cieux (étages 1-10)",
-        "zh": "天之御柱 (1-10)"
+        "zh": "天之御柱 1～10层"
       },
       "t": "0",
       "h": "0",
@@ -4817,7 +4817,7 @@
         "ko": "천궁탑 (11-20)",
         "ja": "アメノミハシラ 11～20層",
         "fr": "le Pilier des Cieux (étages 11-20)",
-        "zh": "天之御柱 (11-20)"
+        "zh": "天之御柱 11～20层"
       },
       "t": "0",
       "h": "0",
@@ -4829,7 +4829,7 @@
         "ko": "천궁탑 (21-30)",
         "ja": "アメノミハシラ 21～30層",
         "fr": "le Pilier des Cieux (étages 21-30)",
-        "zh": "天之御柱 (21-30)"
+        "zh": "天之御柱 21～30层"
       },
       "t": "0",
       "h": "0",
@@ -4841,7 +4841,7 @@
         "ko": "천궁탑 (31-40)",
         "ja": "アメノミハシラ 31～40層",
         "fr": "le Pilier des Cieux (étages 31-40)",
-        "zh": "天之御柱 (31-40)"
+        "zh": "天之御柱 31～40层"
       },
       "t": "0",
       "h": "0",
@@ -4853,7 +4853,7 @@
         "ko": "천궁탑 (41-50)",
         "ja": "アメノミハシラ 41～50層",
         "fr": "le Pilier des Cieux (étages 41-50)",
-        "zh": "天之御柱 (41-50)"
+        "zh": "天之御柱 41～50层"
       },
       "t": "0",
       "h": "0",
@@ -4865,7 +4865,7 @@
         "ko": "천궁탑 (51-60)",
         "ja": "アメノミハシラ 51～60層",
         "fr": "le Pilier des Cieux (étages 51-60)",
-        "zh": "天之御柱 (51-60)"
+        "zh": "天之御柱 51～60层"
       },
       "t": "0",
       "h": "0",
@@ -4877,7 +4877,7 @@
         "ko": "천궁탑 (61-70)",
         "ja": "アメノミハシラ 61～70層",
         "fr": "le Pilier des Cieux (étages 61-70)",
-        "zh": "天之御柱 (61-70)"
+        "zh": "天之御柱 61～70层"
       },
       "t": "0",
       "h": "0",
@@ -4889,7 +4889,7 @@
         "ko": "천궁탑 (71-80)",
         "ja": "アメノミハシラ 71～80層",
         "fr": "le Pilier des Cieux (étages 71-80)",
-        "zh": "天之御柱 (71-80)"
+        "zh": "天之御柱 71～80层"
       },
       "t": "0",
       "h": "0",
@@ -4901,7 +4901,7 @@
         "ko": "천궁탑 (81-90)",
         "ja": "アメノミハシラ 81～90層",
         "fr": "le Pilier des Cieux (étages 81-90)",
-        "zh": "天之御柱 (81-90)"
+        "zh": "天之御柱 81～90层"
       },
       "t": "0",
       "h": "0",
@@ -4913,7 +4913,7 @@
         "ko": "천궁탑 (91-100)",
         "ja": "アメノミハシラ 91～100層",
         "fr": "le Pilier des Cieux (étages 91-100)",
-        "zh": "天之御柱 (91-100)"
+        "zh": "天之御柱 91～100层"
       },
       "t": "0",
       "h": "0",
@@ -4962,6 +4962,450 @@
         "ja": "禁断の地 エウレカ：ピューロス編",
         "fr": "Eurêka Pyros",
         "zh": "禁地优雷卡 涌火之地"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "595": {
+      "name": {
+        "en": "Kugane Ohashi",
+        "ja": "Kugane Ohashi",
+        "fr": "Kugane Ohashi",
+        "ko": "Kugane Ohashi",
+        "zh": "保镖歼灭战"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "610": {
+      "name": {
+        "en": "All's Well That Starts Well",
+        "ja": "All's Well That Starts Well",
+        "fr": "All's Well That Starts Well",
+        "ko": "All's Well That Starts Well",
+        "zh": "All's Well That Starts Well"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "611": {
+      "name": {
+        "en": "the Ghimlyt Dark",
+        "ja": "the Ghimlyt Dark",
+        "fr": "the Ghimlyt Dark",
+        "ko": "the Ghimlyt Dark",
+        "zh": "the Ghimlyt Dark"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "612": {
+      "name": {
+        "en": "Much Ado About Pudding",
+        "ja": "Much Ado About Pudding",
+        "fr": "Much Ado About Pudding",
+        "ko": "Much Ado About Pudding",
+        "zh": "Much Ado About Pudding"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "613": {
+      "name": {
+        "en": "Waiting for Golem",
+        "ja": "Waiting for Golem",
+        "fr": "Waiting for Golem",
+        "ko": "Waiting for Golem",
+        "zh": "Waiting for Golem"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "614": {
+      "name": {
+        "en": "Gentlemen Prefer Swords",
+        "ja": "Gentlemen Prefer Swords",
+        "fr": "Gentlemen Prefer Swords",
+        "ko": "Gentlemen Prefer Swords",
+        "zh": "Gentlemen Prefer Swords"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "615": {
+      "name": {
+        "en": "The Threepenny Turtles",
+        "ja": "The Threepenny Turtles",
+        "fr": "The Threepenny Turtles",
+        "ko": "The Threepenny Turtles",
+        "zh": "The Threepenny Turtles"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "616": {
+      "name": {
+        "en": "Eye Society",
+        "ja": "Eye Society",
+        "fr": "Eye Society",
+        "ko": "Eye Society",
+        "zh": "Eye Society"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "617": {
+      "name": {
+        "en": "A Chorus Slime",
+        "ja": "A Chorus Slime",
+        "fr": "A Chorus Slime",
+        "ko": "A Chorus Slime",
+        "zh": "A Chorus Slime"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "618": {
+      "name": {
+        "en": "Bomb-edy of Errors",
+        "ja": "Bomb-edy of Errors",
+        "fr": "Bomb-edy of Errors",
+        "ko": "Bomb-edy of Errors",
+        "zh": "Bomb-edy of Errors"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "619": {
+      "name": {
+        "en": "To Kill a Mockingslime",
+        "ja": "To Kill a Mockingslime",
+        "fr": "To Kill a Mockingslime",
+        "ko": "To Kill a Mockingslime",
+        "zh": "To Kill a Mockingslime"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "620": {
+      "name": {
+        "en": "A Little Knight Music",
+        "ja": "A Little Knight Music",
+        "fr": "A Little Knight Music",
+        "ko": "A Little Knight Music",
+        "zh": "A Little Knight Music"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "621": {
+      "name": {
+        "en": "Some Like It Excruciatingly Hot",
+        "ja": "Some Like It Excruciatingly Hot",
+        "fr": "Some Like It Excruciatingly Hot",
+        "ko": "Some Like It Excruciatingly Hot",
+        "zh": "Some Like It Excruciatingly Hot"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "622": {
+      "name": {
+        "en": "The Plant-om of the Opera",
+        "ja": "The Plant-om of the Opera",
+        "fr": "The Plant-om of the Opera",
+        "ko": "The Plant-om of the Opera",
+        "zh": "The Plant-om of the Opera"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "623": {
+      "name": {
+        "en": "Beauty and a Beast",
+        "ja": "Beauty and a Beast",
+        "fr": "Beauty and a Beast",
+        "ko": "Beauty and a Beast",
+        "zh": "Beauty and a Beast"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "624": {
+      "name": {
+        "en": "Blobs in the Woods",
+        "ja": "Blobs in the Woods",
+        "fr": "Blobs in the Woods",
+        "ko": "Blobs in the Woods",
+        "zh": "Blobs in the Woods"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "625": {
+      "name": {
+        "en": "The Me Nobody Nodes",
+        "ja": "The Me Nobody Nodes",
+        "fr": "The Me Nobody Nodes",
+        "ko": "The Me Nobody Nodes",
+        "zh": "The Me Nobody Nodes"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "626": {
+      "name": {
+        "en": "Sunset Bull-evard",
+        "ja": "Sunset Bull-evard",
+        "fr": "Sunset Bull-evard",
+        "ko": "Sunset Bull-evard",
+        "zh": "Sunset Bull-evard"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "627": {
+      "name": {
+        "en": "The Sword of Music",
+        "ja": "The Sword of Music",
+        "fr": "The Sword of Music",
+        "ko": "The Sword of Music",
+        "zh": "The Sword of Music"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "628": {
+      "name": {
+        "en": "Midsummer Night's Explosion",
+        "ja": "Midsummer Night's Explosion",
+        "fr": "Midsummer Night's Explosion",
+        "ko": "Midsummer Night's Explosion",
+        "zh": "Midsummer Night's Explosion"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "629": {
+      "name": {
+        "en": "On a Clear Day You Can Smell Forever",
+        "ja": "On a Clear Day You Can Smell Forever",
+        "fr": "On a Clear Day You Can Smell Forever",
+        "ko": "On a Clear Day You Can Smell Forever",
+        "zh": "On a Clear Day You Can Smell Forever"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "630": {
+      "name": {
+        "en": "Miss Typhon",
+        "ja": "Miss Typhon",
+        "fr": "Miss Typhon",
+        "ko": "Miss Typhon",
+        "zh": "Miss Typhon"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "631": {
+      "name": {
+        "en": "Chimera on a Hot Tin Roof",
+        "ja": "Chimera on a Hot Tin Roof",
+        "fr": "Chimera on a Hot Tin Roof",
+        "ko": "Chimera on a Hot Tin Roof",
+        "zh": "Chimera on a Hot Tin Roof"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "632": {
+      "name": {
+        "en": "Here Comes the Boom",
+        "ja": "Here Comes the Boom",
+        "fr": "Here Comes the Boom",
+        "ko": "Here Comes the Boom",
+        "zh": "Here Comes the Boom"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "633": {
+      "name": {
+        "en": "Behemoths and Broomsticks",
+        "ja": "Behemoths and Broomsticks",
+        "fr": "Behemoths and Broomsticks",
+        "ko": "Behemoths and Broomsticks",
+        "zh": "Behemoths and Broomsticks"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "634": {
+      "name": {
+        "en": "Amazing Technicolor Pit Fiends",
+        "ja": "Amazing Technicolor Pit Fiends",
+        "fr": "Amazing Technicolor Pit Fiends",
+        "ko": "Amazing Technicolor Pit Fiends",
+        "zh": "Amazing Technicolor Pit Fiends"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "635": {
+      "name": {
+        "en": "Dirty Rotten Azulmagia",
+        "ja": "Dirty Rotten Azulmagia",
+        "fr": "Dirty Rotten Azulmagia",
+        "ko": "Dirty Rotten Azulmagia",
+        "zh": "Dirty Rotten Azulmagia"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "636": {
+      "name": {
+        "en": "the Orbonne Monastery",
+        "ja": "the Orbonne Monastery",
+        "fr": "the Orbonne Monastery",
+        "ko": "the Orbonne Monastery",
+        "zh": "the Orbonne Monastery"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "637": {
+      "name": {
+        "en": "the Wreath of Snakes",
+        "ja": "the Wreath of Snakes",
+        "fr": "the Wreath of Snakes",
+        "ko": "the Wreath of Snakes",
+        "zh": "the Wreath of Snakes"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "638": {
+      "name": {
+        "en": "the Wreath of Snakes (Extreme)",
+        "ja": "the Wreath of Snakes (Extreme)",
+        "fr": "the Wreath of Snakes (Extreme)",
+        "ko": "the Wreath of Snakes (Extreme)",
+        "zh": "the Wreath of Snakes (Extreme)"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "640": {
+      "name": {
+        "en": "Air Force One",
+        "ja": "Air Force One",
+        "fr": "Air Force One",
+        "ko": "Air Force One",
+        "zh": "Air Force One"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "641": {
+      "name": {
+        "en": "Air Force One",
+        "ja": "Air Force One",
+        "fr": "Air Force One",
+        "ko": "Air Force One",
+        "zh": "Air Force One"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "642": {
+      "name": {
+        "en": "Air Force One",
+        "ja": "Air Force One",
+        "fr": "Air Force One",
+        "ko": "Air Force One",
+        "zh": "Air Force One"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "643": {
+      "name": {
+        "en": "Novice Mahjong (Ranked)",
+        "ja": "Novice Mahjong (Ranked)",
+        "fr": "Novice Mahjong (Ranked)",
+        "ko": "Novice Mahjong (Ranked)",
+        "zh": "Novice Mahjong (Ranked)"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "644": {
+      "name": {
+        "en": "Advanced Mahjong (Ranked)",
+        "ja": "Advanced Mahjong (Ranked)",
+        "fr": "Advanced Mahjong (Ranked)",
+        "ko": "Advanced Mahjong (Ranked)",
+        "zh": "Advanced Mahjong (Ranked)"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "645": {
+      "name": {
+        "en": "Four-player Mahjong (Kuitan Enabled)",
+        "ja": "Four-player Mahjong (Kuitan Enabled)",
+        "fr": "Four-player Mahjong (Kuitan Enabled)",
+        "ko": "Four-player Mahjong (Kuitan Enabled)",
+        "zh": "Four-player Mahjong (Kuitan Enabled)"
+      },
+      "t": "0",
+      "h": "0",
+      "d": "0"
+    },
+    "650": {
+      "name": {
+        "en": "Four-player Mahjong (Kuitan Disabled)",
+        "ja": "Four-player Mahjong (Kuitan Disabled)",
+        "fr": "Four-player Mahjong (Kuitan Disabled)",
+        "ko": "Four-player Mahjong (Kuitan Disabled)",
+        "zh": "Four-player Mahjong (Kuitan Disabled)"
       },
       "t": "0",
       "h": "0",
