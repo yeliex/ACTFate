@@ -6,7 +6,7 @@ def get_config():
 
     parser.add_argument('-i', '--input', type=str, required=True,
                         help='Input json file to be updated.')
-    parser.add_argument('-l', '--language', type=str, required=True, choices=['en', 'ja', 'fr', 'ko', 'zh'],
+    parser.add_argument('-l', '--language', type=str, required=True, choices=['en', 'ja', 'fr', 'de', 'ko', 'zh'],
                         help='The language to be updated.')
     parser.add_argument('-c', '--csv', type=str, required=True,
                         help='Exported ContentFinderCondition.csv used for updating. ')
@@ -23,11 +23,12 @@ if __name__=="__main__":
         input_json = json.load(f)
     instances = input_json.get("instances")
     lang = config.get("language")
-    lang_list = ['en', 'ja', 'fr', 'ko', 'zh']
+    lang_list = ['en', 'ja', 'fr', 'de', 'ko', 'zh']
     name_idx = {
         'en':35,
         'ja':35,
         'fr':35,
+        'de':35,
         'ko':35,
         'zh':35
     }
@@ -42,7 +43,7 @@ if __name__=="__main__":
             (key, name) = (row[0], row[name_idx[lang]])
             if name:
                 if key in instances:
-                    if instances[key]["name"][lang]!=name:
+                    if lang not in instances[key]["name"] or instances[key]["name"][lang]!=name:
                         print("Updating instance {}:{}".format(lang, name))
                     instances[key]["name"].update({
                         lang: name

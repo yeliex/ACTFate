@@ -6,7 +6,7 @@ def get_config():
 
     parser.add_argument('-i', '--input', type=str, required=True,
                         help='Input json file to be updated.')
-    parser.add_argument('-l', '--language', type=str, required=True, choices=['en', 'ja', 'fr', 'ko', 'zh'],
+    parser.add_argument('-l', '--language', type=str, required=True, choices=['en', 'ja', 'fr', 'de', 'ko', 'zh'],
                         help='The language to be updated.')
     parser.add_argument('-c', '--csv', type=str, required=True,
                         help='Exported Fate.csv used for updating. ')
@@ -25,9 +25,10 @@ if __name__=="__main__":
     lang = config.get("language")
     lang_list = ['en', 'ja', 'fr', 'ko', 'zh']
     name_idx = {
-        'en':28,
-        'ja':28,
-        'fr':28,
+        'en':26,
+        'ja':26,
+        'fr':26,
+        'de':26,
         'ko':28,
         'zh':28
     }
@@ -42,8 +43,8 @@ if __name__=="__main__":
             (key, name) = (row[0], row[name_idx[lang]])
             if name:
                 if key in fates:
-                    if fates[key]["name"][lang]!=name:
-                        print("Updating instance {}:{}".format(lang, name))
+                    if lang not in fates[key]["name"] or fates[key]["name"][lang]!=name:
+                        print("Updating fate {}:{}".format(lang, name))
                     fates[key]["name"].update({
                         lang: name
                     })
