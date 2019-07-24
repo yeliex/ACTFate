@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -8,6 +8,7 @@ namespace App
 {
     internal partial class Network
     {
+        private bool NetCompatibility;
         private State state = State.IDLE;
         private int lastMember = 0;
         
@@ -227,6 +228,7 @@ namespace App
                     //apply
                     if (status == 0)
                     {
+                        NetCompatibility = false;
                         state = State.QUEUED;
 
                         var rouletteCode = data[20];
@@ -351,11 +353,38 @@ namespace App
                 else if (opcode == 0x0079)
                 {
                     var code = BitConverter.ToUInt16(data, 0);
-                    var status = data[4];
-                    var tank = data[5];
-                    var dps = data[6];
-                    var healer = data[7];
-
+                    byte status = 0;
+                    byte tank = 0;
+                    byte dps = 0;
+                    byte healer = 0;
+                    if (NetCompatibility) // V4.5 版本兼容性
+                    {
+                        order = data[4]; //职能等待顺序
+                        order--;
+                        status = data[8];
+                        tank = data[9];
+                        dps = data[10];
+                        healer = data[11];
+                    }
+                    else
+                    {
+                        order = data[5];
+                        status = data[4];
+                        tank = data[5];
+                        dps = data[6];
+                        healer = data[7];
+                    }
+                    
+                    if (status == 0 && tank == 0 && healer == 0 && dps == 0) // 检查数据异常进行兼容处理
+                    {
+                        NetCompatibility = true;
+                        order = 255;
+                        status = data[8];
+                        tank = data[9];
+                        dps = data[10];
+                        healer = data[11];
+                    }
+                    
                     //var instance = Data.GetInstance(code);
 
                     if (status == 1)
